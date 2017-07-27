@@ -151,3 +151,6 @@ fabric.properties
 pyvenv.cfg
 pip-selfcheck.json
 
+# SQLite3
+*.sqlite3
+
