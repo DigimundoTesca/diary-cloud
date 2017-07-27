@@ -39,6 +39,7 @@ DJANGO_APPS = [
 THIRD_APPS = []
 
 USER_APPS = [
+    'users.apps.UsersConfig',
     'contacts.apps.ContactsConfig',
 ]
 
