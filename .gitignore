@@ -154,3 +154,5 @@ pip-selfcheck.json
 # SQLite3
 *.sqlite3
 
+/contacts/migrations/
+!/contacts/migrations/__init__.py
