@@ -1,0 +1,16 @@
+{% extends "base_simple_nav.html" %}
+
+{% block content %}
+<div class="container">
+  <h2>Inicia Sesión</h2>
+  {% if mensaje %}
+  {{ mensaje }}
+  {% endif %}
+    <form class="" action="" method="POST">
+      {% csrf_token %}
+      <input type="text" name="username" placeholder="Nombre de usuario" value="">
+      <input type="password" name="password" placeholder="Ingresa tu contraseña" value="">
+      <button class="btn pink accent-3" type="submit" name="button">Log In!</button>
+    </form>
+</div>
+{% endblock %}

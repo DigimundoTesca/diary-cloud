@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Contacto, Telefono
 
 
-@login_required()
+@login_required(login_url='users:login')
 def contactos(request):
     template = 'contactos.html'
     contactos_lista = Contacto.objects.all()
