@@ -11,6 +11,21 @@
   </head>
 
   <body>
+    <nav>
+      <div class="container">
+        <div class="nav-wrapper">
+          <a href="#" class="brand-logo">DiaryCloud</a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="sass.html">Contactos</a></li>
+            <li><a href="badges.html">Eventos</a></li>
+            <li>
+              <a href="collapsible.html">{{ request.user }}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
     {% block content %}
 
     {% endblock %}
