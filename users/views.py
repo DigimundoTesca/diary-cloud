@@ -5,6 +5,9 @@ from django.contrib.auth import authenticate
 
 
 def login(request):
+    if request.user.is_authenticated():
+        return redirect('contactos:contactos')
+        
     mensaje = ''
     if request.method == 'POST':
         username = request.POST['username']
