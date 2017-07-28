@@ -9,7 +9,7 @@ class Contacto(models.Model):
     email = models.EmailField(default='', blank=False)
     direccion = models.CharField(max_length=254, blank=True, null=True)
     nota = models.TextField(default='', blank=True, null=True)
-    imagen = models.ImageField(null=True, blank=True)
+    imagen = models.ImageField(upload_to='contacts' ,null=True, blank=True)
     usuario = models.ForeignKey(User)
 
     def __str__(self):
