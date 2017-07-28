@@ -1,4 +1,5 @@
 from django.db import models
+from users.models import User
 
 
 class Contacto(models.Model):
@@ -9,6 +10,7 @@ class Contacto(models.Model):
     direccion = models.CharField(max_length=254, blank=True, null=True)
     nota = models.TextField(default='', blank=True, null=True)
     imagen = models.ImageField(null=True, blank=True)
+    usuario = models.ForeignKey(User)
 
     def __str__(self):
         return '%s' % self.nombre
@@ -32,4 +34,3 @@ class Telefono(models.Model):
 
     def __str__(self):
         return '%s' % self.numero
-
