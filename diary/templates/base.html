@@ -19,7 +19,11 @@
           <ul class="right hide-on-med-and-down">
             <li><a href="{% url 'contactos:contactos' %}">Contactos</a></li>
             <li><a href="badges.html">Eventos</a></li>
+            {% if request.user.is_autheticated %}
             <li><a href="collapsible.html">{{ request.user }}</a></li>
+            {% else %}
+            <li><a href="{% url 'users:login' %}"><span>Iniciar Sesión</span></a></li>
+            {% endif %}
             {% if request.user.is_superuser %}
             <li><a href="{% url 'admin:login' %}">Panel de Control</a></li>
             {% endif %}
@@ -31,7 +35,11 @@
                 <img src="{% static 'image/agenda3.jpg'%}">
               </div>
               <a href="#!user"><img class="circle" src="{{ request.user.avatar.url }}"></a>
+              {% if request.user.is_autheticated %}
               <a href="#!name"><span class="white-text name">{{ request.user }}</span></a>
+              {% else %}
+              <a href="{% url 'users:login' %}"><span class="white-text name">Iniciar Sesión</span></a>
+              {% endif %}
               <a href="#!email"><span class="white-text email">{{ request.user.email }}</span></a>
             </div>
           </li>
