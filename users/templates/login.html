@@ -1,8 +1,14 @@
 {% extends "base_simple_nav.html" %}
+{% load static %}
 
 {% block content %}
+<div class="parallax-container" id="index-banner">
+  <div class="parallax">
+    <img src="{% static 'image/bar.png' %}">
+  </div>
+</div>
 <div class="container">
-  <h2>Inicia Sesión</h2>
+  <h2 class="header">Inicia Sesión</h2>
   {% if mensaje %}
   {{ mensaje }}
   {% endif %}

@@ -1,3 +1,4 @@
+nav,
 nav .brand-logo,
 nav .button-collapse,
 nav ul li a {
@@ -9,7 +10,7 @@ nav li a {
 ul.dropdown-content {
   margin-top: 4.4rem;
 }
-.header {
+h2.header {
   font-weight: 300;
 }
 .parallax-container {
@@ -32,18 +33,18 @@ ul.dropdown-content {
 
 @media screen and (min-width: 480px) {
   .parallax-container {
-    height: 380px;
+    height: 320px;
   }
 }
 
 @media screen and (min-width: 720px) {
   .parallax-container {
-    height: 420px;
+    height: 380px;
   }
 }
 
 @media screen and (min-width: 900px) {
   .parallax-container {
-    height: 500px;
+    height: 460px;
   }
 }
