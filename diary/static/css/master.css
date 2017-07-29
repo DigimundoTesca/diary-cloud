@@ -3,7 +3,12 @@ nav .button-collapse,
 nav ul li a {
   color: #003c61;
 }
-
+nav li a {
+  display: flex;
+}
+ul.dropdown-content {
+  margin-top: 4.4rem;
+}
 .header {
   font-weight: 300;
 }

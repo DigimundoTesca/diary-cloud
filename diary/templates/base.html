@@ -11,6 +11,9 @@
   <link rel="stylesheet" href="{% static 'css/master.css' %}">
 </head>
 <body>
+  <ul id="user-menu" class="dropdown-content">
+    <li><a href="{% url 'users:logout'  %}">Cerrar Sesión</a></li>
+  </ul>
   <nav class="white grey-text text-darken-4">
     <div class="container">
       <div class="nav-wrapper">
@@ -19,8 +22,12 @@
           <ul class="right hide-on-med-and-down">
             <li><a href="{% url 'contactos:contactos' %}">Contactos</a></li>
             <li><a href="badges.html">Eventos</a></li>
-            {% if request.user.is_autheticated %}
-            <li><a href="collapsible.html">{{ request.user }}</a></li>
+            {% if request.user.is_authenticated %}
+            <li>
+              <a data-activates="user-menu" class="dropdown-button">
+              {{ request.user }}<i class="material-icons">arrow_drop_down</i>
+              </a>
+            </li>
             {% else %}
             <li><a href="{% url 'users:login' %}"><span>Iniciar Sesión</span></a></li>
             {% endif %}
@@ -35,10 +42,14 @@
                 <img src="{% static 'image/agenda3.jpg'%}">
               </div>
               <a href="#!user"><img class="circle" src="{{ request.user.avatar.url }}"></a>
-              {% if request.user.is_autheticated %}
-              <a href="#!name"><span class="white-text name">{{ request.user }}</span></a>
+              {% if request.user.is_authenticated %}
+              <a href="#!name" class="white-text">
+              <span class="white-text name"><i class="material-icons">account_circle</i>{{ request.user }}</span>
+              </a>
               {% else %}
-              <a href="{% url 'users:login' %}"><span class="white-text name">Iniciar Sesión</span></a>
+              <a href="{% url 'users:login' %}">
+                <span class="white-text name">Iniciar Sesión</span>
+              </a>
               {% endif %}
               <a href="#!email"><span class="white-text email">{{ request.user.email }}</span></a>
             </div>
@@ -57,18 +68,27 @@
             <div class="divider"></div>
           </li>
           <li><a class="subheader">Usuario</a></li>
+          {% if not request.user.is_authenticated %}
           <li>
-            <a class="waves-effect" href="#!">
-              <i class="material-icons">account_circle</i>{{ request.user }}
+            <a class="waves-effect" href="{% url 'users:login' %}">
+              <i class="material-icons">input</i>Iniciar Sesión
             </a>
           </li>
-          {% if request.user.is_superuser %}
           {% endif %}
+          {% if request.user.is_superuser %}
           <li>
             <a class="waves-effect" href="{% url 'admin:login' %}">
               <i class="material-icons" >settings</i>Panel de Control
             </a>
           </li>
+          {% endif %}
+          {% if request.user.is_authenticated %}
+          <li>
+            <a class="waves-effect" href="{% url 'users:logout' %}">
+              <i class="material-icons">exit_to_app</i>Cerrar Sesión
+            </a>
+          </li>
+          {% endif %}
         </ul>
       </div>
     </div>
@@ -85,6 +105,16 @@
       $(".button-collapse").sideNav();
       $('.parallax').parallax();
       $('select').material_select();
+      $('.dropdown-button').dropdown({
+        inDuration: 300,
+        outDuration: 225,
+        constrainWidth: false, // Does not change width of dropdown to that of the activator
+        hover: false, // Activate on hover
+        gutter: 0, // Spacing from edge
+        belowOrigin: false, // Displays dropdown below the button
+        alignment: 'right', // Displays dropdown with edge aligned to the left of button
+        stopPropagation: false // Stops event propagation
+      });
    });
   </script>
 </body>
