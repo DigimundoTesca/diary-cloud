@@ -10,7 +10,13 @@
 <div class="container">
   <h2 class="header">Inicia Sesión</h2>
   {% if mensaje %}
-  {{ mensaje }}
+  <div class="row">
+    <div class="col s12">
+      <blockquote>
+        {{ mensaje }}
+      </blockquote>
+    </div>
+  </div>
   {% endif %}
     <form class="" action="" method="POST">
       {% csrf_token %}
