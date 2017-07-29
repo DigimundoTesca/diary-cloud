@@ -1,33 +1,28 @@
 nav,
 nav .brand-logo,
 nav .button-collapse,
-nav ul li a {
-  color: #003c61; }
-
 nav li a {
+  color: #003c61;
   display: flex; }
 
 ul.dropdown-content {
-  margin-top: 4.2sudo gemrem; }
+  margin-top: 4.2rem; }
 
 h2.header {
   font-weight: 300; }
 
 .parallax-container {
   height: 240px; }
-
-.parallax-container .parallax-title {
-  display: flex;
-  justify-content: center;
-  height: 100%; }
-
-.parallax-title h2 {
-  align-self: center;
-  text-align: center;
-  color: #fefefe; }
-
-.parallax-container .parallax img {
-  max-width: 200%; }
+  .parallax-container .parallax-title {
+    display: flex;
+    justify-content: center;
+    height: 100%; }
+    .parallax-container .parallax-title h2 {
+      align-self: center;
+      text-align: center;
+      color: #fefefe; }
+  .parallax-container .parallax img {
+    max-width: 200%; }
 
 @media screen and (min-width: 480px) {
   .parallax-container {
