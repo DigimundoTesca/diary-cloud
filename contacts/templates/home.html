@@ -1,7 +1,14 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block content %}
+<div class="parallax-container ">
+  <div class="parallax container">
+    <img src="{% static 'image/pen2.jpg' %}">
+  </div>
+  <div class="parallax-title container">
+    <h2 class="header">Tu agenda, donde quiera que vayas</h2>
+  </div>
+</div>
 <div class="container">
-  <h2>Página de inicio</h2>
 </div>
 {% endblock %}

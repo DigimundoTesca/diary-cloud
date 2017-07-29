@@ -6,13 +6,12 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
-
   <!--Let browser know website is optimized for mobile-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="{% static 'css/master.css' %}">
 </head>
-
 <body>
-  <nav class="blue darken-4">
+  <nav class="white grey-text text-darken-4">
     <div class="container">
       <div class="nav-wrapper">
         <a href="{% url 'contactos:home' %}" class="brand-logo">DigiAgenda</a>
@@ -29,7 +28,7 @@
           <li>
             <div class="user-view">
               <div class="background">
-                <img src="{% static 'images/agenda3.jpg'%}">
+                <img src="{% static 'image/agenda3.jpg'%}">
               </div>
               <a href="#!user"><img class="circle" src="{{ request.user.avatar.url }}"></a>
               <a href="#!name"><span class="white-text name">{{ request.user }}</span></a>
@@ -55,9 +54,11 @@
               <i class="material-icons">account_circle</i>{{ request.user }}
             </a>
           </li>
+          {% if request.user.is_superuser %}
+          {% endif %}
           <li>
-            <a class="waves-effect" href="#!">
-              <i class="material-icons">settings</i>Panel de Control
+            <a class="waves-effect" href="{% url 'admin:login' %}">
+              <i class="material-icons" >settings</i>Panel de Control
             </a>
           </li>
         </ul>
@@ -72,7 +73,11 @@
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
   <script type="text/javascript">
-    $(".button-collapse").sideNav();
+    $(document).ready(function(){
+      $(".button-collapse").sideNav();
+      $('.parallax').parallax();
+      $('select').material_select();
+   });
   </script>
 </body>
 </html>

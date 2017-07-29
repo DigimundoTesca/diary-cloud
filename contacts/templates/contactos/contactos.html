@@ -1,6 +1,11 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block content %}
+<div class="parallax-container container">
+  <div class="parallax">
+    <img src="{% static 'image/book.jpg' %}">
+  </div>
+</div>
 <div class="container">
   <table class="highlight">
     <thead>
@@ -29,6 +34,8 @@
 </div>
 
   <div class="fixed-action-btn">
-    <a class="btn-floating btn-large waves-effect waves-light pink accent-3"><i class="material-icons">add</i></a>
+    <a href="{% url 'contactos:nuevo_contacto' %}" class="btn-floating btn-large waves-effect waves-light orange accent-3">
+      <i class="material-icons">add</i>
+    </a>
   </div>
 {% endblock %}

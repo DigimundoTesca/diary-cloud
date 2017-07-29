@@ -8,5 +8,5 @@ app_name = 'contactos'
 urlpatterns = [
     url(r'^$', views.home, name='home'),
     url(r'^contactos/$', views.contactos, name='contactos'),
-    url(r'^contactos/nuevo/$', views.nuevo_contacto, name='nuevo_contactos')
+    url(r'^contactos/nuevo/$', views.nuevo_contacto, name='nuevo_contacto')
 ]

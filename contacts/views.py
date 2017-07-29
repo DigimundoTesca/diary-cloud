@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from .models import Contacto, Telefono
-
+from .forms import ContactoForm
 
 def home(request):
     template = 'home.html'
@@ -23,6 +23,9 @@ def contactos(request):
 
 @login_required()
 def nuevo_contacto(request):
+    form = ContactoForm
     template = 'contactos/nuevo_contacto.html'
-    context = {}
+    context = {
+    'form': form
+    }
     return render(request, template, context)

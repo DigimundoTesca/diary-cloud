@@ -1,5 +1,16 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block content %}
-{{ form.as_p }}
+<div class="parallax-container" id="index-banner">
+  <div class="parallax">
+    <img src="{% static 'image/carta.jpg' %}">
+  </div>
+</div>
+<div class="container">
+  <h2 class="header">Crear nuevo contacto</h2>
+  <form class="" action="index.html" method="post">
+    {{ form.as_p }}
+    <button type="submit" name="button" class="btn orange accent-3">Crear contacto</button>
+  </form>
+</div>
 {% endblock %}

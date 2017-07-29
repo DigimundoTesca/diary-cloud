@@ -1,0 +1,44 @@
+nav .brand-logo,
+nav .button-collapse,
+nav ul li a {
+  color: #003c61;
+}
+
+.header {
+  font-weight: 300;
+}
+.parallax-container {
+  height: 240px;
+}
+.parallax-container .parallax-title {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+}
+.parallax-title h2 {
+  align-self: center;
+  text-align: center;
+  color: #fefefe;
+}
+
+.parallax-container .parallax img {
+  max-width: 200%;
+}
+
+@media screen and (min-width: 480px) {
+  .parallax-container {
+    height: 380px;
+  }
+}
+
+@media screen and (min-width: 720px) {
+  .parallax-container {
+    height: 420px;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .parallax-container {
+    height: 500px;
+  }
+}
