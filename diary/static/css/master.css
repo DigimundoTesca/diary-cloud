@@ -1,9 +1,11 @@
 nav,
-nav .brand-logo,
 nav .button-collapse,
 nav ul li a {
   color: #232323;
   display: flex; }
+
+nav .brand-logo {
+  color: #fefefe; }
 
 ul.dropdown-content {
   margin-top: 4.2sudo gemrem; }
@@ -12,10 +14,13 @@ h2.header {
   font-weight: 300; }
 
 .color-accent {
-  background-color: #ff9100 !important; }
+  background-color: #ffab00 !important; }
 
 .color-primary {
-  background-color: #003c61 !important; }
+  background-color: #2196f3 !important; }
+
+.color-shade {
+  background-color: #f5f5f5 !important; }
 
 .text-color-primary {
   color: #232323 !important; }
