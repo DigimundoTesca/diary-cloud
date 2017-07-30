@@ -11,93 +11,108 @@
   <link rel="stylesheet" href="{% static 'css/master.css' %}">
 </head>
 <body class="color-shade">
-  <ul id="slide-out" class="side-nav">
-    <li>
-      <div class="user-view">
-        <div class="background">
-          <img src="{% static 'image/agenda3.jpg'%}">
+  <header>
+    <ul id="slide-out" class="side-nav">
+      <li>
+        <div class="user-view">
+          <div class="background">
+            <img src="{% static 'image/agenda3.jpg'%}">
+          </div>
+          <a href="#!user"><img class="circle" src="{{ request.user.avatar.url }}"></a>
+          {% if request.user.is_authenticated %}
+          <a href="#!name" class="white-text">
+            <span class="white-text name"><i class="material-icons">account_circle</i>{{ request.user }}</span>
+          </a>
+          {% else %}
+          <a href="{% url 'users:login' %}">
+            <span class="white-text name">Iniciar Sesión</span>
+          </a>
+          {% endif %}
+          <a href="#!email"><span class="white-text email">{{ request.user.email }}</span></a>
         </div>
-        <a href="#!user"><img class="circle" src="{{ request.user.avatar.url }}"></a>
-        {% if request.user.is_authenticated %}
-        <a href="#!name" class="white-text">
-          <span class="white-text name"><i class="material-icons">account_circle</i>{{ request.user }}</span>
+      </li>
+      <li>
+        <a href="{% url 'contactos:contactos' %}">
+          <i class="material-icons">contacts</i>Contactos
         </a>
-        {% else %}
-        <a href="{% url 'users:login' %}">
-          <span class="white-text name">Iniciar Sesión</span>
+      </li>
+      <li>
+        <a href="#!">
+          <i class="material-icons">today</i>Agenda
         </a>
-        {% endif %}
-        <a href="#!email"><span class="white-text email">{{ request.user.email }}</span></a>
-      </div>
-    </li>
-    <li>
-      <a href="{% url 'contactos:contactos' %}">
-        <i class="material-icons">contacts</i>Contactos
-      </a>
-    </li>
-    <li>
-      <a href="#!">
-        <i class="material-icons">today</i>Agenda
-      </a>
-    </li>
-    <li>
-      <div class="divider"></div>
-    </li>
-    <li><a class="subheader">Usuario</a></li>
-    {% if not request.user.is_authenticated %}
-    <li>
-      <a class="waves-effect" href="{% url 'users:login' %}">
-        <i class="material-icons">input</i>Iniciar Sesión
-      </a>
-    </li>
-    {% endif %}
-    {% if request.user.is_superuser %}
-    <li>
-      <a class="waves-effect" href="{% url 'admin:login' %}">
-        <i class="material-icons" >settings</i>Panel de Control
-      </a>
-    </li>
-    {% endif %}
-    {% if request.user.is_authenticated %}
-    <li>
-      <a class="waves-effect" href="{% url 'users:logout' %}">
-        <i class="material-icons">exit_to_app</i>Cerrar Sesión
-      </a>
-    </li>
-    {% endif %}
-  </ul>
-  <ul id="user-menu" class="dropdown-content">
-    <li><a href="{% url 'users:logout'  %}">Cerrar Sesión</a></li>
-  </ul>
-  <div class="navbar-fixed">
-    <nav class="white">
-      <div class="container">
-        <div class="nav-wrapper">
-          <a href="{% url 'contactos:home' %}" class="brand-logo text-color-primary">DigiAgenda</a>
-          <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
-          <ul class="right hide-on-med-and-down">
-            <li><a href="{% url 'contactos:contactos' %}">Contactos</a></li>
-            <li><a href="badges.html">Eventos</a></li>
-            {% if request.user.is_authenticated %}
-            <li>
-              <a data-activates="user-menu" class="dropdown-button">
-              {{ request.user }}<i class="material-icons">arrow_drop_down</i>
-              </a>
-            </li>
-            {% else %}
-            <li><a href="{% url 'users:login' %}"><span>Iniciar Sesión</span></a></li>
-            {% endif %}
-            {% if request.user.is_superuser %}
-            <li><a href="{% url 'admin:login' %}">Panel de Control</a></li>
-            {% endif %}
-          </ul>
+      </li>
+      <li>
+        <div class="divider"></div>
+      </li>
+      <li><a class="subheader">Usuario</a></li>
+      {% if not request.user.is_authenticated %}
+      <li>
+        <a class="waves-effect" href="{% url 'users:login' %}">
+          <i class="material-icons">input</i>Iniciar Sesión
+        </a>
+      </li>
+      {% endif %}
+      {% if request.user.is_superuser %}
+      <li>
+        <a class="waves-effect" href="{% url 'admin:login' %}">
+          <i class="material-icons" >settings</i>Panel de Control
+        </a>
+      </li>
+      {% endif %}
+      {% if request.user.is_authenticated %}
+      <li>
+        <a class="waves-effect" href="{% url 'users:logout' %}">
+          <i class="material-icons">exit_to_app</i>Cerrar Sesión
+        </a>
+      </li>
+      {% endif %}
+    </ul>
+    <ul id="user-menu" class="dropdown-content">
+      <li><a href="{% url 'users:logout'  %}">Cerrar Sesión</a></li>
+    </ul>
+    <div class="navbar-fixed">
+      <nav class="white">
+        <div class="container">
+          <div class="nav-wrapper">
+            <a href="{% url 'contactos:home' %}" class="brand-logo text-">DigiAgenda</a>
+            <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+              <li><a href="{% url 'contactos:contactos' %}">Contactos</a></li>
+              <li><a href="badges.html">Eventos</a></li>
+              {% if request.user.is_authenticated %}
+              <li>
+                <a data-activates="user-menu" class="dropdown-button">
+                  {{ request.user }}<i class="material-icons">arrow_drop_down</i>
+                </a>
+              </li>
+              {% else %}
+              <li><a href="{% url 'users:login' %}"><span>Iniciar Sesión</span></a></li>
+              {% endif %}
+              {% if request.user.is_superuser %}
+              <li><a href="{% url 'admin:login' %}">Panel de Control</a></li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <main>
+    {% block content %}
+    {% endblock %}
+  </main>
+  <footer class="page-footer ">
+    <div class="container">
+      <div class="row">
+        <div class="col s12 l8 center">
+          © 2017 Digimundo. Todos los derechos reservados.
+        </div>
+        <div class="col s12 l4 center">
+          <a class="grey-text text-lighten-4" href="#!">Made with ♥ by Digimundo</a>
         </div>
       </div>
-    </nav>
-  </div>
-  {% block content %}
-
-  {% endblock %}
+    </div>
+  </footer>
   <!--Import jQuery before materialize.js-->
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <!-- Compiled and minified JavaScript -->
