@@ -4,7 +4,8 @@ body {
   flex-direction: column; }
 
 footer.page-footer {
-  background-color: #2962ff; }
+  background-color: #2962ff;
+  font-size: .9rem; }
 
 main {
   flex: 1 0 auto; }
@@ -16,10 +17,10 @@ nav ul li a {
   display: flex; }
 
 nav .brand-logo {
-  color: color("grey", "lighten-5"); }
+  color: #fafafa; }
 
 ul.dropdown-content {
-  margin-top: 4.2sudo gemrem; }
+  margin-top: 4.2rem; }
 
 .header {
   font-weight: 300; }
@@ -29,18 +30,21 @@ ul.dropdown-content {
 .color-primary {
   background-color: #2962ff !important; }
   .color-primary-darken {
-    background-color: #003adc !important; }
+    background-color: #0041f5 !important; }
   .color-primary-lighten {
-    background-color: #769aff !important; }
+    background-color: #5c87ff !important; }
 .color-shade {
-  background-color: color("grey", "lighten-4") !important; }
+  background-color: #f5f5f5 !important; }
 
 .container-wide {
-  margin-top: 5rem;
-  margin-bottom: 8rem; }
+  margin-top: 3rem;
+  margin-bottom: 5rem; }
   .container-wide a.btn {
     border-radius: 100px;
     margin-top: 1rem; }
+
+.dropdown-content li > span, .dropdown-content li > a {
+  color: #039be5; }
 
 .text-color-primary {
   color: #232323 !important; }
@@ -54,15 +58,19 @@ ul.dropdown-content {
     height: 100%;
     text-align: center;
     justify-content: center;
-    color: color("grey", "lighten-5");
+    color: #fafafa;
     align-items: center; }
 
+.mt-0 {
+  margin-top: 0; }
 .mt-1 {
   margin-top: 1rem; }
 .mt-2 {
   margin-top: 2rem; }
 .mt-3 {
   margin-top: 3rem; }
+.mb-0 {
+  margin-bottom: 0; }
 .mb-1 {
   margin-bottom: 1rem; }
 .mb-2 {
@@ -77,13 +85,12 @@ ul.dropdown-content {
   font-size: 1.5rem;
   margin-top: 5px; }
 
-#agenda-cont {
-  padding-top: 3rem; }
-
-@media screen and (min-width: 480px) {
-  .parallax-container {
-    height: 320px; } }
-@media screen and (min-width: 720px) {
+@media only screen and (min-width: 601px) {
+  footer.page-footer .row .col:nth-child(1) {
+    text-align: left; }
+  footer.page-footer .row .col:nth-child(2) {
+    text-align: right; } }
+@media only screen and (min-width: 993px) {
   .parallax-container {
     height: 380px; }
 

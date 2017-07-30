@@ -4,36 +4,32 @@
 $text-color-primary: #232323;
 
 $primary-color: #2962ff !default;
-$primary-color-light: lighten($primary-color, 15%) !default;
-$primary-color-dark: darken($primary-color, 15%) !default;
+$primary-color-light: lighten($primary-color, 10%) !default;
+$primary-color-dark: darken($primary-color, 10%) !default;
 
 $secondary-color: #ffab00 !default;
-$secondary-color-light: lighten($secondary-color, 15%) !default;
-$secondary-color-dark: darken($primary-color, 15%) !default;
+$secondary-color-light: lighten($secondary-color, 10%) !default;
+$secondary-color-dark: darken($secondary-color, 10%) !default;
 
-$success-color: color("green", "accent-4") !default;
-$error-color: color("red", "base") !default;
-$link-color: color("light-blue", "darken-1") !default;
+$success-color: #00c853 !default;
+$error-color: #f44336 !default;
+$link-color: #039be5 !default;
 
-$white: color("grey", "lighten-5") !default;
-$shade-color: color("grey", "lighten-4") !default;
-
+$white: #fafafa !default;
+$shade-color: #f5f5f5 !default;
 
 
 // 12. Global
 // ==========================================================================
 
 // Media Query Ranges
-$small-screen-up: 601px !default;
-$medium-screen-up: 993px !default;
-$large-screen-up: 1201px !default;
 $small-screen: 600px !default;
+$small-screen-up: 601px !default;
 $medium-screen: 992px !default;
+$medium-screen-up: 993px !default;
 $large-screen: 1200px !default;
+$large-screen-up: 1201px !default;
 
-$medium-and-up: "only screen and (min-width : #{$small-screen-up})" !default;
-$large-and-up: "only screen and (min-width : #{$medium-screen-up})" !default;
-$extra-large-and-up: "only screen and (min-width : #{$large-screen-up})" !default;
-$small-and-down: "only screen and (max-width : #{$small-screen})" !default;
-$medium-and-down: "only screen and (max-width : #{$medium-screen})" !default;
-$medium-only: "only screen and (min-width : #{$small-screen-up}) and (max-width : #{$medium-screen})" !default;
+$small-and-up: "only screen and (min-width : #{$small-screen-up})" !default;
+$medium-and-up: "only screen and (min-width : #{$medium-screen-up})" !default;
+$large-and-up: "only screen and (min-width : #{$large-screen-up})" !default;
