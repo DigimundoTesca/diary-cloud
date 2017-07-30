@@ -10,15 +10,13 @@ nav .brand-logo {
 ul.dropdown-content {
   margin-top: 4.2sudo gemrem; }
 
-h2.header {
+.header {
   font-weight: 300; }
 
 .color-accent {
   background-color: #ffab00 !important; }
-
 .color-primary {
   background-color: #2196f3 !important; }
-
 .color-shade {
   background-color: #f5f5f5 !important; }
 
@@ -27,24 +25,36 @@ h2.header {
 
 .parallax-container {
   height: 240px; }
-  .parallax-container .parallax-title {
+  .parallax-container .parallax img {
+    max-width: 200%; }
+  .parallax-container .parallax-body {
     display: flex;
+    height: 100%;
+    text-align: center;
     justify-content: center;
-    height: 100%; }
+    color: #fefefe;
+    align-items: center; }
 
-.parallax-title h2 {
-  align-self: center;
-  text-align: center;
-  color: #fefefe; }
+.promo i {
+  font-size: 10rem;
+  color: #2196f3; }
+.promo p.promo-caption {
+  font-size: 1.5rem;
+  margin-top: 5px; }
 
-.parallax-container .parallax img {
-  max-width: 200%; }
+#agenda-cont {
+  padding-top: 3rem; }
 
 @media screen and (min-width: 480px) {
   .parallax-container {
     height: 320px; } }
 @media screen and (min-width: 720px) {
   .parallax-container {
-    height: 380px; } }
+    height: 380px; }
+
+  .promo i {
+    font-size: 12rem; }
+  .promo p.promo-caption {
+    font-size: 1.7rem; } }
 
 /*# sourceMappingURL=master.css.map */

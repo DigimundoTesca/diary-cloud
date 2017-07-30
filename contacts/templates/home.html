@@ -5,18 +5,56 @@
   <div class="parallax container">
     <img src="{% static 'image/pen2.jpg' %}">
   </div>
-  <div class="parallax-title container">
+  <div class="parallax-body">
     <h2 class="header">Tu agenda, donde quiera que vayas</h2>
   </div>
 </div>
-<div class="container">
+<div id="agenda-cont" class="container">
   <div class="row">
-    <div class="col x12">
-      <div class="card">
-          <button class="btn color-accent" type="button" name="button">
-            Ir a mi Agenda
-          </button>
+    <div class="col s12 m4">
+      <div class="promo center">
+        <i class="material-icons">alarm</i>
+        <p class="promo-caption">
+          Mantente al día.
+        </p>
+        <p class="light">
+          Podrás tener el control de tus activdades, desde recordatorios, hasta citas con tus clientes o eventos sociales.
+        </p>
       </div>
+    </div>
+    <div class="col s12 m4">
+      <div class="center promo">
+        <i class="material-icons">people</i>
+        <p class="promo-caption">
+          Organiza tus contactos.
+        </p>
+        <p class="light">
+          Todos tus contactos organizados incluyendo herramientas para mejorar tiempo y productividad.
+        </p>
+      </div>
+    </div>
+    <div class="col s12 m4">
+      <div class="promo center">
+        <i class="material-icons">important_devices</i>
+        <p class="promo-caption">
+          Accede desde cualqueir lugar.
+        </p>
+        <p class="light">
+          Accede a tus contactos desde cualquier lugar y desde cualquier dispositivo.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="parallax-container ">
+  <div class="parallax container">
+    <img src="{% static 'image/read.png' %}">
+  </div>
+  <div class="parallax-body container">
+    <div class="row parallax-body">
+      <a class="btn btn-large color-accent waves-effect waves-light" href="{% url 'contactos:contactos' %}">
+        Ir a mi Agenda
+      </a>
     </div>
   </div>
 </div>

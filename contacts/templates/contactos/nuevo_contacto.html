@@ -5,9 +5,13 @@
   <div class="parallax">
     <img src="{% static 'image/carta.jpg' %}">
   </div>
+  <div class="parallax-body">
+    <h2 class="header">
+      Crear nuevo contacto
+    </h2>
+  </div>
 </div>
 <div class="container">
-  <h2 class="header">Crear nuevo contacto</h2>
   <form class="" action="" method="post">
     {% csrf_token %}
     {{ form.as_p }}
