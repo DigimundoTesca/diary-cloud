@@ -2,18 +2,28 @@ $white: #fefefe;
 $color-primary: #003c61;
 $color-accent: #ff9100;
 
+$text-color-primary: #232323;
 nav,
 nav .brand-logo,
 nav .button-collapse,
-nav li a {
-  color: $color-primary;
+nav ul li a {
+  color: $text-color-primary;
   display: flex;
 }
 ul.dropdown-content {
-  margin-top: 4.2rem;
+  margin-top: 4.2sudo gemrem;
 }
 h2.header {
   font-weight: 300;
+}
+.color-accent {
+  background-color: $color-accent !important;
+}
+.color-primary {
+  background-color: $color-primary !important;
+}
+.text-color-primary {
+  color: $text-color-primary !important;
 }
 .parallax-container {
   height: 240px;
@@ -21,15 +31,16 @@ h2.header {
     display: flex;
     justify-content: center;
     height: 100%;
-    h2 {
-      align-self: center;
-      text-align: center;
-      color: $white;
-    }
   }
-  .parallax img {
-    max-width: 200%;
-  }
+}
+.parallax-title h2 {
+  align-self: center;
+  text-align: center;
+  color: $white;
+}
+
+.parallax-container .parallax img {
+  max-width: 200%;
 }
 
 @media screen and (min-width: 480px) {
