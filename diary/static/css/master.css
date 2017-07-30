@@ -1,3 +1,12 @@
+.text-color-primary {
+  color: #232323 !important; }
+
+.text-color-shade {
+  color: #636363 !important; }
+
+.text-color-secondary {
+  color: #f5f5f5 !important; }
+
 body {
   display: flex;
   min-height: 100vh;
@@ -17,10 +26,15 @@ nav ul li a {
   display: flex; }
 
 nav .brand-logo {
-  color: #fafafa; }
+  color: #F5F5F5; }
 
 ul.dropdown-content {
-  margin-top: 4.2rem; }
+  margin-top: 4.2rem;
+  align-content: center; }
+
+.container.max-cont {
+  height: 100vh;
+  justify-content: center; }
 
 .header {
   font-weight: 300; }
@@ -30,11 +44,11 @@ ul.dropdown-content {
 .color-primary {
   background-color: #2962ff !important; }
   .color-primary-darken {
-    background-color: #0041f5 !important; }
+    background-color: #003adc !important; }
   .color-primary-lighten {
-    background-color: #5c87ff !important; }
+    background-color: #769aff !important; }
 .color-shade {
-  background-color: #f5f5f5 !important; }
+  background-color: #F5F5F5 !important; }
 
 .container-wide {
   margin-top: 3rem;
@@ -46,8 +60,13 @@ ul.dropdown-content {
 .dropdown-content li > span, .dropdown-content li > a {
   color: #039be5; }
 
-.text-color-primary {
-  color: #232323 !important; }
+.login-card .card-content {
+  padding-top: 8rem;
+  padding-bottom: .5rem; }
+.login-card i#login-icon {
+  font-size: 8rem;
+  color: #2962ff;
+  margin: 1rem auto; }
 
 .parallax-container {
   height: 240px; }
@@ -58,7 +77,7 @@ ul.dropdown-content {
     height: 100%;
     text-align: center;
     justify-content: center;
-    color: #fafafa;
+    color: #F5F5F5;
     align-items: center; }
 
 .mt-0 {

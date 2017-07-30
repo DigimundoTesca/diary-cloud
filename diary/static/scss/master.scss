@@ -1,5 +1,18 @@
 @import "components/variables";
 
+// Text Colors
+// ==========================================================================
+.text-color-primary {
+  color: $text-color-primary !important;
+}
+.text-color-shade {
+  color: $text-color-shade !important;
+}
+.text-color-secondary {
+  color: $text-color-secondary !important;
+}
+// BASE
+// ==========================================================================
 body {
   display: flex;
   min-height: 100vh;
@@ -19,10 +32,15 @@ nav ul li a {
   display: flex;
 }
 nav .brand-logo {
-  color: $white;
+  color: $shade-color;
 }
 ul.dropdown-content {
   margin-top: 4.2rem;
+  align-content: center;
+}
+.container.max-cont {
+  height: 100vh;
+  justify-content: center;
 }
 .header {
   font-weight: 300;
@@ -57,8 +75,16 @@ ul.dropdown-content {
     color: $link-color;
   }
 }
-.text-color-primary {
-  color: $text-color-primary !important;
+.login-card {
+  .card-content {
+    padding-top: 8rem;
+    padding-bottom: .5rem;
+  }
+  i#login-icon {
+  font-size: 8rem;
+  color: $primary-color;
+  margin: 1rem auto;
+  }
 }
 .parallax-container {
   height: 240px;
@@ -70,7 +96,7 @@ ul.dropdown-content {
     height: 100%;
     text-align: center;
     justify-content: center;
-    color: $white;
+    color: $shade-color;
     align-items: center;
   }
 }
@@ -94,6 +120,9 @@ ul.dropdown-content {
     margin-top: 5px;
   }
 }
+
+// MEDIA QUERIES
+// ==========================================================================
 @media #{$small-and-up} {
   footer.page-footer .row .col {
     &:nth-child(1) { text-align: left; }
