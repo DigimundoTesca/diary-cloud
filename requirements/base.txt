@@ -1,0 +1,15 @@
+# Base dependencies go here
+
+# Django minimum required
+# -------------------------------------------------------
+Django==1.11.3
+
+# Images
+# -------------------------------------------------------
+olefile==0.44
+Pillow==4.2.1
+
+
+# World Timezone Detinitions for Python
+# -------------------------------------------------------
+pytz==2017.2

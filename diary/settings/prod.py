@@ -2,7 +2,7 @@ from diary.settings.develop import *
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['agenda.digimundo.com.mx']
 
 TEMPLATES[0]['OPTIONS']['debug'] = DEBUG
 
