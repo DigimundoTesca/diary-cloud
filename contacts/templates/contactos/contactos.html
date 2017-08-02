@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="parallax-container">
+  <div class="parallax">
+    <img src="{% static 'image/book.jpg' %}">
+  </div>
+  <div class="parallax-body">
+    <h2 class="header">
+      Lista de contactos
+    </h2>
+  </div>
+</div>
+<div class="container mt-1 mb-2">
+  <table class="highlight responsive-table">
+    <thead>
+      <th>Nombre</th>
+      <th>Email</th>
+      <th>Empresa</th>
+      <th>Teléfonos</th>
+    </thead>
+    <tbody>
+      {% for contacto in contactos %}
+      <tr>
+        <td>{{ contacto.nombre }}</td>
+        <td>{{ contacto.email }}</td>
+        <td>{{ contacto.empresa }}</td>
+        <td>
+          {% for telefono in telefonos %}
+            {% if telefono.contacto == contacto %}
+            {{ telefono }}
+            {% endif %}
+          {% endfor %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+  <div class="fixed-action-btn">
+    <a href="{% url 'contactos:nuevo_contacto' %}" class="btn-floating btn-large waves-effect waves-light color-secondary">
+      <i class="material-icons">add</i>
+    </a>
+  </div>
+{% endblock %}
