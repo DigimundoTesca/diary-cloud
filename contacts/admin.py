@@ -9,6 +9,7 @@ class TelefonoAdmin(admin.TabularInline):
 
 @admin.register(Contacto)
 class ContactoAdmin(admin.ModelAdmin):
-    list_display = ('id', 'nombre', 'email', 'telefono_principal', 'empresa',)
+    list_display = ('id', 'nombre', 'email', 'telefono_principal', 'empresa', 'usuario',)
+    list_editable = ('email', 'telefono_principal', 'empresa', 'usuario',)
     list_display_links = ('id', 'nombre', )
     inlines = (TelefonoAdmin, )
