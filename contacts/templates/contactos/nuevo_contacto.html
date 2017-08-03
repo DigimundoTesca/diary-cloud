@@ -11,11 +11,136 @@
     </h2>
   </div>
 </div>
-<div class="container mb-3">
-  <form class="" action="" method="post">
+<div class="container mt-2 mb-3">
+  <div class="card-panel">
+    <form class="" action="" method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" name="button" class="btn color-secondary">Crear contacto</button>
-  </form>
+    <div class="row">
+      <!-- Nombre -->
+      <div class="input-field col s12 m4">
+        <input id="{{ form.nombre.id_for_label }}"
+          type="text"
+          class="validate {% if form.nombre.errors %}invalid{% endif %}"
+          name="{{ form.nombre.name }}"
+          value="{{ form.nombre.value }}"
+          maxlength="{{ form.nombre.field.max_length }}"
+          />
+        <label
+          for="{{ form.nombre.id_for_label }}"
+          data-error="{% for e in form.nombre.errors %}{{ e }}{% endfor %}"
+          />
+          Nombre (s)</label>
+      </div>
+      <!-- Apellidos -->
+      <div class="input-field col s12 m8">
+        <input id="{{ form.apellidos.id_for_label }}"
+          type="text"
+          class="validate {% if form.apellidos.errors %}invalid{% endif %}"
+          name="{{ form.apellidos.name }}"
+          value="{{ form.apellidos.value }}"
+          maxlength="{{ form.apellidos.field.max_length }}"
+          />
+        <label
+          for="{{ form.apellidos.id_for_label }}"
+          data-error="{% for e in form.apellidos.errors %}{{ e }}{% endfor %}"
+          />
+          Apellido (s)</label>
+      </div>
+      <!-- Telefono Principal -->
+      <div class="input-field col s12 m4">
+        <input id="{{ form.telefono_principal.id_for_label }}"
+        type="tel"
+        class="validate {% if form.telefono_principal.errors %}invalid{% endif %}"
+        name="{{ form.telefono_principal.name }}"
+        value="{{ form.telefono_principal.value }}"
+        maxlength="{{ form.telefono_principal.field.max_length }}"
+        />
+        <label
+          for="{{ form.telefono_principal.id_for_label }}"
+          data-error="{% for e in form.telefono_principal.errors %}{{ e }}{% endfor %}"
+          />Telefono Principal</label>
+      </div>
+      <!-- Email -->
+      <div class="input-field col s12 m8">
+        <input id="{{ form.email.id_for_label }}"
+        type="email"
+        class="validate {% if form.email.errors %}invalid{% endif %}"
+        name="{{ form.email.name }}"
+        value="{{ form.email.value }}"
+        maxlength="{{ form.email.field.max_length }}"
+        />
+        <label
+          for="{{ form.email.id_for_label }}"
+          data-error="{% for e in form.email.errors %}{{ e }}{% endfor %}"
+        />Email</label>
+      </div>
+      <!-- Empresa -->
+      <div class="input-field col s12 m6">
+        <input id="{{ form.empresa.id_for_label }}"
+        type="text"
+        class="validate {% if form.empresa.errors %}invalid{% endif %}"
+        name="{{ form.empresa.name }}"
+        value="{{ form.empresa.value }}"
+        maxlength="{{ form.empresa.field.max_length }}"
+        />
+        <label
+          for="{{ form.empresa.id_for_label }}"
+          data-error="{% for e in form.empresa.errors %}{{ e }}{% endfor %}"
+          />Empresa</label>
+      </div>
+      <!-- Direccion -->
+      <div class="input-field col s12 m12">
+        <input id="{{ form.direcion.id_for_label }}"
+        type="text"
+        class="validate {% if form.direccion.errors %}invalid{% endif %}"
+        name="{{ form.direcion.name }}"
+        value="{{ form.value.value }}"
+        maxlength="{{ form.direcion.field.max_length }}"
+        />
+        <label
+          for="{{ form.direcion.id_for_label }}"
+          data-error="{% for e in form.direccion.errors %}{{ e }}{% endfor %}"
+          />Direccion</label>
+      </div>
+      <!-- Web -->
+      <div class="input-field col s12 m6">
+        <input id="{{ form.web.id_for_label }}"
+        placeholder="http://www.ejemplo.com"
+        type="url"
+        class="validate {% if form.web.errors %}invalid{% endif %}"
+        name="{{ form.web.name }}"
+        maxlength="{{ form.web.field.max_length }}"
+        />
+        <label
+          for="{{ form.web.id_for_label }}"
+          data-error="{% for e in form.web.errors %}{{ e }}{% endfor %}"
+          />Web</label>
+      </div>
+      <!-- Nota -->
+      <div class="input-field col s12">
+        <textarea id="{{ form.nota.id_for_label }}"
+          name="{{ form.nota.name}}"
+          class="materialize-textarea {% if form.nota.errors %}invalid{% endif %}"
+          ></textarea>
+        <label
+          for="{{ form.nota.id_for_label }}"
+          data-error="{% for e in form.nota.errors %}{{ e }}{% endfor %}"
+          />Nota</label>
+      </div>
+      </div>
+      <!-- Imagen -->
+      <div class="file-field input-field col s12">
+        <div class="btn color-primary">
+          <span>Imagen</span>
+          <input type="file" name="{{ form.imagen.name }}">
+        </div>
+        <div class="file-path-wrapper">
+          <input type="text" class="file-path validate">
+        </div>
+      </div>
+      <input type="hidden" name="usuario" value="{{ request.user.id }}">
+      <button type="submit" name="button" class="btn color-secondary right">Crear contacto</button>
+    </form>
+  </div>
 </div>
 {% endblock %}
