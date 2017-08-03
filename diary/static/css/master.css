@@ -60,6 +60,15 @@ footer.page-footer {
   background-color: #2962ff;
   font-size: .9rem; }
 
+.icon-edit {
+  color: #003adc; }
+.icon-edit:hover {
+  color: #4375ff; }
+.icon-delete {
+  color: #f44336; }
+.icon-delete:hover {
+  color: #f99d97; }
+
 main {
   flex: 1 0 auto; }
 
@@ -107,6 +116,19 @@ ul.dropdown-content {
 
 .dropdown-content li > span, .dropdown-content li > a {
   color: #039be5; }
+
+tr td.td-icons span.icon-container {
+  padding-left: .5rem;
+  padding-right: .5rem;
+  cursor: pointer;
+  transition: all .3s;
+  overflow: hidden; }
+
+.icon-container span.icon-container {
+  display: flex;
+  min-width: 6rem; }
+  .icon-container span.icon-container i {
+    font-size: 1.7rem; }
 
 .login-card .card-content {
   padding-top: 8rem;
