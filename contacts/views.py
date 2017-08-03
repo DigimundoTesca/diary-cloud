@@ -13,7 +13,7 @@ def home(request):
 @login_required()
 def contactos(request):
     template = 'contactos/contactos.html'
-    contactos_lista = Contacto.objects.all()
+    contactos_lista = Contacto.objects.filter(usuario=request.user.id)
     telefonos_lista = Telefono.objects.all()
     context = {
         'contactos': contactos_lista,
