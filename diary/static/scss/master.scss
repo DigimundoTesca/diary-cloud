@@ -17,12 +17,6 @@
 
 // INPUT COLORS OVERRIDE
 // ==========================================================================
-// .input-field input[type=text].validate,
-// .input-field input[type=tel].validate,
-// .input-field input[type=email].validate,
-// .input-field input[type=url].validate {
-//   margin: 1rem 0 0 0;
-// }
 /* label color */
 .input-field label {
   color: $text-color-shade;
@@ -75,6 +69,26 @@ body {
 footer.page-footer  {
   background-color: $primary-color;
   font-size: .9rem;
+}
+.icon {
+  &-info {
+    color: $secondary-color;
+  }
+  &-info:hover {
+    color: lighten($secondary-color, 20%);
+  }
+  &-edit {
+    color: $primary-color-dark;
+  }
+  &-edit:hover {
+    color: lighten($primary-color-dark, 20%);
+  }
+  &-delete {
+    color: $error-color;
+  }
+  &-delete:hover {
+    color: lighten($error-color, 20%);
+  }
 }
 main {
   flex: 1 0 auto;
@@ -131,6 +145,23 @@ ul.dropdown-content {
 .dropdown-content li {
   >span, >a {
     color: $link-color;
+  }
+}
+tr td.td-icons {
+  display: flex;
+  span.icon-container {
+    padding-left: .5rem;
+    padding-right: .5rem;
+    cursor: pointer;
+    transition: all .3s;
+    overflow: hidden;
+  }
+}
+.icon-container span.icon-container {
+  display: flex;
+  min-width: 6rem;
+  i {
+    font-size: 1.7rem;
   }
 }
 .login-card {
