@@ -12,6 +12,11 @@
 </head>
 <body class="color-shade">
   <header>
+    <!-- USER DROPDOWN CONTENT -->
+    <ul id="user-menu" class="dropdown-content">
+      <li><a href="{% url 'users:logout'  %}">Cerrar Sesión</a></li>
+    </ul>
+    <!-- SIDE NAV -->
     <ul id="slide-out" class="side-nav">
       <li>
         <div class="user-view">
@@ -67,9 +72,7 @@
       </li>
       {% endif %}
     </ul>
-    <ul id="user-menu" class="dropdown-content">
-      <li><a href="{% url 'users:logout'  %}">Cerrar Sesión</a></li>
-    </ul>
+    <!-- NAVBAR -->
     <div class="navbar-fixed">
       <nav class="white">
         <div class="container">
@@ -142,6 +145,7 @@
         alignment: 'right', // Displays dropdown with edge aligned to the left of button
         stopPropagation: false // Stops event propagation
       });
+      $('#id_nota').trigger('autoresize');
    });
   </script>
 </body>

@@ -24,7 +24,18 @@ def contactos(request):
 
 class NuevoContacto(CreateView):
     model = Contacto
-    fields = ['nombre','empresa', 'web', 'email', 'direccion', 'nota', 'imagen', 'usuario']
+    fields = [
+        'nombre',
+        'apellidos',
+        'telefono_principal',
+        'email',
+        'empresa',
+        'web',
+        'direccion',
+        'nota',
+        'imagen',
+        'usuario',
+    ]
     template_name = 'contactos/nuevo_contacto.html'
 
     def form_valid(self, form):
