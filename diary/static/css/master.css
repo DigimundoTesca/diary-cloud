@@ -60,6 +60,10 @@ footer.page-footer {
   background-color: #2962ff;
   font-size: .9rem; }
 
+.icon-info {
+  color: #ffab00; }
+.icon-info:hover {
+  color: #ffcd66; }
 .icon-edit {
   color: #003adc; }
 .icon-edit:hover {
@@ -117,12 +121,14 @@ ul.dropdown-content {
 .dropdown-content li > span, .dropdown-content li > a {
   color: #039be5; }
 
-tr td.td-icons span.icon-container {
-  padding-left: .5rem;
-  padding-right: .5rem;
-  cursor: pointer;
-  transition: all .3s;
-  overflow: hidden; }
+tr td.td-icons {
+  display: flex; }
+  tr td.td-icons span.icon-container {
+    padding-left: .5rem;
+    padding-right: .5rem;
+    cursor: pointer;
+    transition: all .3s;
+    overflow: hidden; }
 
 .icon-container span.icon-container {
   display: flex;

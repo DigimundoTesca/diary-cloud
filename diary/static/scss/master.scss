@@ -71,6 +71,12 @@ footer.page-footer  {
   font-size: .9rem;
 }
 .icon {
+  &-info {
+    color: $secondary-color;
+  }
+  &-info:hover {
+    color: lighten($secondary-color, 20%);
+  }
   &-edit {
     color: $primary-color-dark;
   }
@@ -142,6 +148,7 @@ ul.dropdown-content {
   }
 }
 tr td.td-icons {
+  display: flex;
   span.icon-container {
     padding-left: .5rem;
     padding-right: .5rem;
