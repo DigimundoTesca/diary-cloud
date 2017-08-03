@@ -121,20 +121,19 @@ ul.dropdown-content {
 .dropdown-content li > span, .dropdown-content li > a {
   color: #039be5; }
 
-tr td.td-icons {
-  display: flex; }
-  tr td.td-icons span.icon-container {
-    padding-left: .5rem;
-    padding-right: .5rem;
-    cursor: pointer;
-    transition: all .3s;
-    overflow: hidden; }
-
-.icon-container span.icon-container {
+tr td.td-icons-container {
   display: flex;
-  min-width: 6rem; }
-  .icon-container span.icon-container i {
-    font-size: 1.7rem; }
+  justify-content: center; }
+  tr td.td-icons-container span.icon-container {
+    cursor: pointer;
+    display: flex;
+    height: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    overflow: hidden;
+    transition: all .3s; }
+    tr td.td-icons-container span.icon-container i {
+      font-size: 1.7rem; }
 
 .login-card .card-content {
   padding-top: 8rem;

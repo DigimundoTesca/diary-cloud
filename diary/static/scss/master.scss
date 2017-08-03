@@ -147,21 +147,20 @@ ul.dropdown-content {
     color: $link-color;
   }
 }
-tr td.td-icons {
+tr td.td-icons-container {
   display: flex;
+  justify-content: center;
   span.icon-container {
-    padding-left: .5rem;
-    padding-right: .5rem;
     cursor: pointer;
-    transition: all .3s;
+    display: flex;
+    height: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
     overflow: hidden;
-  }
-}
-.icon-container span.icon-container {
-  display: flex;
-  min-width: 6rem;
-  i {
-    font-size: 1.7rem;
+    transition: all .3s;
+    i {
+      font-size: 1.7rem;
+    }
   }
 }
 .login-card {
