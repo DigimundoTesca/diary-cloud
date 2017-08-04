@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import Contacto, Telefono
-from .forms import ContactoForm
 from django.views.generic import CreateView
 
 def home(request):
@@ -26,12 +25,12 @@ class NuevoContacto(CreateView):
     model = Contacto
     fields = [
         'nombre',
-        'apellidos',
+        'empresa',
+        'cargo',
         'telefono_principal',
         'email',
-        'empresa',
-        'web',
         'direccion',
+        'web',
         'nota',
         'imagen',
         'usuario',

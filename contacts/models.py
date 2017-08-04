@@ -4,7 +4,6 @@ from users.models import User
 
 class Contacto(models.Model):
     nombre = models.CharField(max_length=60, default='')
-    apellidos = models.CharField(max_length=120, default='')
     telefono_principal = models.CharField(max_length=12, default='')
     empresa = models.CharField(max_length=90, default='', blank=True, null=True)
     cargo = models.CharField(max_length=28, default='', blank=True, null=True)
