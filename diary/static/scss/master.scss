@@ -27,7 +27,7 @@ textarea.materialize-textarea:focus + label.active,
 .input-field input[type=tel]:focus.validate + label.active,
 .input-field input[type=email]:focus.validate + label.active,
 .input-field input[type=url]:focus.validate + label.active {
-  color: $secondary-color;
+  color: $primary-color-light;
 }
 /* label underline focus color */
 textarea.materialize-textarea:focus:not([readonly]),
@@ -35,8 +35,8 @@ textarea.materialize-textarea:focus:not([readonly]),
 .input-field input[type=tel]:focus.validate,
 .input-field input[type=email]:focus.validate,
 .input-field input[type=url]:focus.validate {
-  border-bottom: 1px solid $secondary-color;
-  box-shadow: 0 1px 0 0 $secondary-color;
+  border-bottom: 1px solid $primary-color-light;
+  box-shadow: 0 1px 0 0 $primary-color-light;
 }
 /* valid color */
 .input-field input[type=text].valid,
@@ -70,18 +70,18 @@ footer.page-footer  {
   background-color: $primary-color;
   font-size: .9rem;
 }
-.icon {
+.icon-container .icon {
   &-info {
-    color: $secondary-color;
+    color: $text-color-shade;
   }
   &-info:hover {
-    color: lighten($secondary-color, 20%);
+    color: lighten($text-color-shade, 20%);
   }
   &-edit {
-    color: $primary-color-dark;
+    color: $primary-color;
   }
   &-edit:hover {
-    color: lighten($primary-color-dark, 20%);
+    color: lighten($primary-color, 20%);
   }
   &-delete {
     color: $error-color;
@@ -114,8 +114,11 @@ ul.dropdown-content {
   height: 100vh;
   justify-content: center;
 }
-.header {
-  font-weight: 300;
+.file-field .btn {
+  background-color: $primary-color;
+  &:hover {
+  background-color: $primary-color-light;
+  }
 }
 .color {
   &-secondary {
@@ -141,6 +144,9 @@ ul.dropdown-content {
     border-radius: 100px;
     margin-top: 1rem;
   }
+}
+.header {
+  font-weight: 300;
 }
 .dropdown-content li {
   >span, >a {
@@ -197,6 +203,12 @@ tr td.td-icons-container {
   &b-1 { margin-bottom: 1rem ; }
   &b-2 { margin-bottom: 2rem; }
   &b-3 { margin-bottom: 3rem; }
+}
+.material-icons {
+  color: $text-color-shade;
+  &.prefix.active{
+    color: $primary-color-light;
+  }
 }
 .promo {
   i {

@@ -31,9 +31,9 @@
         <td>{{ contacto.email }}</td>
         <td>{{ contacto.empresa }}</td>
         <td class="td-icons-container">
-          <span class="icon-container icon-info"><i class="material-icons">info_outline</i></span>
-          <span class="icon-container icon-edit"><i class="material-icons">mode_edit</i></span>
-          <span class="icon-container icon-delete"><i class="material-icons">delete</i></span>
+          <span class="icon-container"><i class="material-icons icon-info">info_outline</i></span>
+          <span class="icon-container"><i class="material-icons icon-edit">mode_edit</i></span>
+          <span class="icon-container"><i class="material-icons icon-delete">delete</i></span>
         </td>
       </tr>
       {% endfor %}
@@ -43,7 +43,7 @@
 
   <div class="fixed-action-btn">
     <a href="{% url 'contactos:nuevo_contacto' %}" class="btn-floating btn-large waves-effect waves-light color-secondary">
-      <i class="material-icons">add</i>
+      <i class="waves-effect waves-light material-icons">add</i>
     </a>
   </div>
 {% endblock %}

@@ -11,13 +11,14 @@
     </h2>
   </div>
 </div>
-<div class="container mt-2 mb-3">
+<div class="container mt-1 mb-2">
   <div class="card-panel">
     <form class="" action="" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="row">
       <!-- Nombre -->
-      <div class="input-field col s12 m4">
+      <div class="input-field col s12">
+        <i class="material-icons prefix ">account_circle</i>
         <input id="{{ form.nombre.id_for_label }}"
           type="text"
           class="validate {% if form.nombre.errors %}invalid{% endif %}"
@@ -29,25 +30,42 @@
           for="{{ form.nombre.id_for_label }}"
           data-error="{% for e in form.nombre.errors %}{{ e }}{% endfor %}"
           />
-          Nombre (s)</label>
+          Nombre</label>
       </div>
-      <!-- Apellidos -->
-      <div class="input-field col s12 m8">
-        <input id="{{ form.apellidos.id_for_label }}"
+      <!-- Empresa -->
+      <div class="input-field col s12 m6">
+        <i class="material-icons prefix ">business</i>
+        <input id="{{ form.empresa.id_for_label }}"
+        type="text"
+        class="validate {% if form.empresa.errors %}invalid{% endif %}"
+        name="{{ form.empresa.name }}"
+        value="{{ form.empresa.value }}"
+        maxlength="{{ form.empresa.field.max_length }}"
+        />
+        <label
+          for="{{ form.empresa.id_for_label }}"
+          data-error="{% for e in form.empresa.errors %}{{ e }}{% endfor %}"
+          />Empresa</label>
+      </div>
+      <!-- Cargo -->
+      <div class="input-field col s12 m6">
+        <i class="material-icons prefix ">business_center</i>
+        <input id="{{ form.cargo.id_for_label }}"
           type="text"
-          class="validate {% if form.apellidos.errors %}invalid{% endif %}"
-          name="{{ form.apellidos.name }}"
-          value="{{ form.apellidos.value }}"
-          maxlength="{{ form.apellidos.field.max_length }}"
+          class="validate {% if form.cargo.errors %}invalid{% endif %}"
+          name="{{ form.cargo.name }}"
+          value="{{ form.cargo.value }}"
+          maxlength="{{ form.cargo.field.max_length }}"
           />
         <label
-          for="{{ form.apellidos.id_for_label }}"
-          data-error="{% for e in form.apellidos.errors %}{{ e }}{% endfor %}"
+          for="{{ form.cargo.id_for_label }}"
+          data-error="{% for e in form.cargo.errors %}{{ e }}{% endfor %}"
           />
-          Apellido (s)</label>
+          Cargo</label>
       </div>
       <!-- Telefono Principal -->
-      <div class="input-field col s12 m4">
+      <div class="input-field col s12 m6">
+        <i class="material-icons prefix ">phone</i>
         <input id="{{ form.telefono_principal.id_for_label }}"
         type="tel"
         class="validate {% if form.telefono_principal.errors %}invalid{% endif %}"
@@ -61,7 +79,8 @@
           />Telefono Principal</label>
       </div>
       <!-- Email -->
-      <div class="input-field col s12 m8">
+      <div class="input-field col s12 m6">
+        <i class="material-icons prefix ">email</i>
         <input id="{{ form.email.id_for_label }}"
         type="email"
         class="validate {% if form.email.errors %}invalid{% endif %}"
@@ -74,22 +93,9 @@
           data-error="{% for e in form.email.errors %}{{ e }}{% endfor %}"
         />Email</label>
       </div>
-      <!-- Empresa -->
-      <div class="input-field col s12 m6">
-        <input id="{{ form.empresa.id_for_label }}"
-        type="text"
-        class="validate {% if form.empresa.errors %}invalid{% endif %}"
-        name="{{ form.empresa.name }}"
-        value="{{ form.empresa.value }}"
-        maxlength="{{ form.empresa.field.max_length }}"
-        />
-        <label
-          for="{{ form.empresa.id_for_label }}"
-          data-error="{% for e in form.empresa.errors %}{{ e }}{% endfor %}"
-          />Empresa</label>
-      </div>
       <!-- Direccion -->
       <div class="input-field col s12 m12">
+        <i class="material-icons prefix ">location_on</i>
         <input id="{{ form.direcion.id_for_label }}"
         type="text"
         class="validate {% if form.direccion.errors %}invalid{% endif %}"
@@ -103,7 +109,8 @@
           />Direccion</label>
       </div>
       <!-- Web -->
-      <div class="input-field col s12 m6">
+      <div class="input-field col s12">
+        <i class="material-icons prefix ">link</i>
         <input id="{{ form.web.id_for_label }}"
         placeholder="http://www.ejemplo.com"
         type="url"
@@ -118,6 +125,7 @@
       </div>
       <!-- Nota -->
       <div class="input-field col s12">
+        <i class="material-icons prefix ">note</i>
         <textarea id="{{ form.nota.id_for_label }}"
           name="{{ form.nota.name}}"
           class="materialize-textarea {% if form.nota.errors %}invalid{% endif %}"
@@ -130,8 +138,8 @@
       </div>
       <!-- Imagen -->
       <div class="file-field input-field col s12">
-        <div class="btn color-primary">
-          <span>Imagen</span>
+        <div class="btn waves-effect waves-light">
+          <span>Foto</span>
           <input type="file" name="{{ form.imagen.name }}">
         </div>
         <div class="file-path-wrapper">
@@ -139,7 +147,7 @@
         </div>
       </div>
       <input type="hidden" name="usuario" value="{{ request.user.id }}">
-      <button type="submit" name="button" class="btn color-secondary right">Crear contacto</button>
+      <button type="submit" name="button" class="btn bt waves-effect waves-light color-secondary right">Crear contacto</button>
     </form>
   </div>
 </div>
