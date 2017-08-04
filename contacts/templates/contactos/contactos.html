@@ -16,20 +16,20 @@
   <table class="highlight striped centered responsive-table">
     <thead>
       <th>Nombre</th>
-      <th>Apellidos</th>
       <th>Teléfono Principal</th>
       <th>Email</th>
       <th>Empresa</th>
+      <th>Cargo</th>
       <th>Acciones</th>
     </thead>
     <tbody>
       {% for contacto in contactos %}
       <tr>
         <td>{{ contacto.nombre }}</td>
-        <td>{{ contacto.apellidos }}</td>
         <td>{{ contacto.telefono_principal }}</td>
         <td>{{ contacto.email }}</td>
         <td>{{ contacto.empresa }}</td>
+        <td>{{ contacto.cargo }}</td>
         <td class="td-icons-container">
           <span class="icon-container"><i class="material-icons icon-info">info_outline</i></span>
           <span class="icon-container"><i class="material-icons icon-edit">mode_edit</i></span>
