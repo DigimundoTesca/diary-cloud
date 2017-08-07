@@ -36,3 +36,12 @@ class Telefono(models.Model):
 
     def __str__(self):
         return '%s' % self.numero
+
+
+class Empresa(models.Model):
+    nombre = models.CharField(max_length=60, default='')
+    giro = models.CharField(max_length=30, default='')
+    tipo = models.CharField(max_length=20, default='')
+
+    def __str__(self):
+        return '%s' % self.nombre
