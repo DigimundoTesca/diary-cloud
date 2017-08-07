@@ -2,6 +2,14 @@ from django.db import models
 from users.models import User
 
 
+TIPO = (
+    ('AGU', 'agua'),
+    ('FUE', 'fuego'),
+    ('TIE', 'tierra'),
+    ('AIR', 'aire'),
+)
+
+
 class Contacto(models.Model):
     nombre = models.CharField(max_length=60, default='')
     telefono_principal = models.CharField(max_length=12, default='')
@@ -41,7 +49,7 @@ class Telefono(models.Model):
 class Empresa(models.Model):
     nombre = models.CharField(max_length=60, default='')
     giro = models.CharField(max_length=30, default='')
-    tipo = models.CharField(max_length=20, default='')
+    tipo = models.CharField(max_length=20, default='', choices=TIPO)
 
     def __str__(self):
         return '%s' % self.nombre
