@@ -21,6 +21,7 @@ class Contacto(models.Model):
     nota = models.TextField(default='', blank=True, null=True)
     imagen = models.ImageField(upload_to='contacts', null=True, blank=True)
     usuario = models.ForeignKey(User)
+    creado_en = models.DateTimeField(editable=False, auto_now=True)
 
     def __str__(self):
         return '%s' % self.nombre
