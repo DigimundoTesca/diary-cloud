@@ -10,10 +10,19 @@ TIPO = (
 )
 
 
+class Empresa(models.Model):
+    nombre = models.CharField(max_length=60, default='')
+    giro = models.CharField(max_length=30, default='')
+    tipo = models.CharField(max_length=20, default='', choices=TIPO)
+
+    def __str__(self):
+        return '%s' % self.nombre
+
+
 class Contacto(models.Model):
     nombre = models.CharField(max_length=60, default='')
     telefono_principal = models.CharField(max_length=12, default='')
-    empresa = models.CharField(max_length=90, default='', blank=True, null=True)
+    empresa = models.ForeignKey(Empresa)
     cargo = models.CharField(max_length=28, default='', blank=True, null=True)
     web = models.URLField(default='', blank=True, null=True)
     email = models.EmailField(default='', blank=True, null=True)
@@ -45,12 +54,3 @@ class Telefono(models.Model):
 
     def __str__(self):
         return '%s' % self.numero
-
-
-class Empresa(models.Model):
-    nombre = models.CharField(max_length=60, default='')
-    giro = models.CharField(max_length=30, default='')
-    tipo = models.CharField(max_length=20, default='', choices=TIPO)
-
-    def __str__(self):
-        return '%s' % self.nombre

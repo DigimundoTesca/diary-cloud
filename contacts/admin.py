@@ -1,10 +1,14 @@
 from django.contrib import admin
-from .models import Contacto, Telefono
+from .models import Contacto, Telefono, Empresa
 
 
 class TelefonoAdmin(admin.TabularInline):
     model = Telefono
     extra = 0
+
+@admin.register(Empresa)
+class EmpresaAdmin(admin.ModelAdmin):
+        list_display = ('id', 'nombre', 'giro','tipo',)
 
 
 @admin.register(Contacto)
