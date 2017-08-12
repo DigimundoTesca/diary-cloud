@@ -166,6 +166,3 @@ pip-selfcheck.json
 
 /users/migrations/
 !/users/migrations/__init__.py
-
-
-media
