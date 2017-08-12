@@ -2,15 +2,18 @@ from django.db import models
 from users.models import User
 
 
-TIPO = (
-    ('AGU', 'agua'),
-    ('FUE', 'fuego'),
-    ('TIE', 'tierra'),
-    ('AIR', 'aire'),
-)
-
-
 class Empresa(models.Model):
+    AGUA = 'AG'
+    FUEGO = 'FG'
+    TIERRA = 'TR'
+    AIRE = 'AR'
+
+    TIPO = (
+        (AGUA, 'agua'),
+        (FUEGO, 'fuego'),
+        (TIERRA, 'tierra'),
+        (AIRE, 'aire'),
+    )
     nombre = models.CharField(max_length=60, default='')
     giro = models.CharField(max_length=30, default='')
     tipo = models.CharField(max_length=20, default='', choices=TIPO)
@@ -18,6 +21,16 @@ class Empresa(models.Model):
     def __str__(self):
         return '%s' % self.nombre
 
+
+      
+class Telefono(models.Model):
+    tipo = models.CharField(max_length=24, default='', help_text='Ingresa el tipo de telefono')
+    numero = models.CharField(max_length=12, default='', help_text='Ingresa un numero no mayor a 16 digitos')
+    contacto = models.ForeignKey(Contacto)
+
+    def __str__(self):
+        return '%s' % self.numero
+      
 
 class Contacto(models.Model):
     nombre = models.CharField(max_length=60, default='')
@@ -46,11 +59,3 @@ class Contacto(models.Model):
 
     telefono.allow_tags = True
 
-
-class Telefono(models.Model):
-    tipo = models.CharField(max_length=24, default='', help_text='Ingresa el tipo de telefono')
-    numero = models.CharField(max_length=12, default='', help_text='Ingresa un numero no mayor a 16 digitos')
-    contacto = models.ForeignKey(Contacto)
-
-    def __str__(self):
-        return '%s' % self.numero

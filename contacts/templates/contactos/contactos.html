@@ -20,6 +20,7 @@
       <th>Email</th>
       <th>Empresa</th>
       <th>Tipo empresa</th>
+      <th>Cargo</th>
       <th>creado por</th>
       <th>Acciones</th>
     </thead>
@@ -31,19 +32,19 @@
         <td>{{ contacto.email }}</td>
         <td>{{ contacto.empresa }}</td>
         <td>
-
           {% if contacto.empresa.tipo == "FUE" %}
-                  <i class="material-icons">whatshot</i>
-           {% elif contacto.empresa.tipo == "AGU" %}
-                  <i class="material-icons">opacity</i>
-           {% elif contacto.empresa.tipo == "TIE" %}
-                  <i class="material-icons">terrain</i>
-           {% elif contacto.empresa.tipo == "AIR" %}
-                  <i class="material-icons">toys</i>
-           {% else %}
-                 <h4>'retail'</h4>
-           {% endif %}
+            <i class="material-icons">whatshot</i>
+          {% elif contacto.empresa.tipo == "AGU" %
+            <i class="material-icons">opacity</i>
+          {% elif contacto.empresa.tipo == "TIE" %}
+            <i class="material-icons">terrain</i>
+          {% elif contacto.empresa.tipo == "AIR" %}
+            <i class="material-icons">toys</i>
+          {% else %}
+            <h4>'retail'</h4>
+          {% endif %}
         </td>
+        <td>{{ contacto.cargo }}</td>
         <td>{{ contacto.usuario }}</td>
         <td class="td-icons-container">
           <span class="icon-container"><i class="material-icons icon-info">info_outline</i></span>

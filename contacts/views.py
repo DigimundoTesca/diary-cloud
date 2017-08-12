@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Contacto, Telefono, Empresa
 from django.views.generic import CreateView
 
+
 def home(request):
     template = 'home.html'
     context = {}
