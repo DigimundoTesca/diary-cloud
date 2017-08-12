@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from .models import Contacto, Telefono
+from .models import Contacto, Telefono, Empresa
 from django.views.generic import CreateView
 
 def home(request):
@@ -12,11 +12,13 @@ def home(request):
 @login_required()
 def contactos(request):
     template = 'contactos/contactos.html'
-    contactos_lista = Contacto.objects.filter(usuario=request.user.id)
+    contactos_lista = Contacto.objects.all()
     telefonos_lista = Telefono.objects.all()
+    empresa_lista = Empresa.objects.all()
     context = {
         'contactos': contactos_lista,
-        'telefonos': telefonos_lista
+        'telefonos': telefonos_lista,
+        'empresa' : empresa_lista
     }
     return render(request, template, context)
 

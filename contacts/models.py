@@ -2,6 +2,14 @@ from django.db import models
 from users.models import User
 
 
+TIPO = (
+    ('AGU', 'agua'),
+    ('FUE', 'fuego'),
+    ('TIE', 'tierra'),
+    ('AIR', 'aire'),
+)
+
+
 class Contacto(models.Model):
     nombre = models.CharField(max_length=60, default='')
     telefono_principal = models.CharField(max_length=12, default='')
@@ -13,6 +21,7 @@ class Contacto(models.Model):
     nota = models.TextField(default='', blank=True, null=True)
     imagen = models.ImageField(upload_to='contacts', null=True, blank=True)
     usuario = models.ForeignKey(User)
+    creado_en = models.DateTimeField(editable=False, auto_now=True)
 
     def __str__(self):
         return '%s' % self.nombre
@@ -36,3 +45,12 @@ class Telefono(models.Model):
 
     def __str__(self):
         return '%s' % self.numero
+
+
+class Empresa(models.Model):
+    nombre = models.CharField(max_length=60, default='')
+    giro = models.CharField(max_length=30, default='')
+    tipo = models.CharField(max_length=20, default='', choices=TIPO)
+
+    def __str__(self):
+        return '%s' % self.nombre
