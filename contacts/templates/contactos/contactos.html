@@ -3,7 +3,9 @@
 
 {% block stylesheets  %}
 <!--Let browser know website is optimized for mobile-->
+<!--
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
+-->
 {% endblock %}
 
 {% block content %}
@@ -18,7 +20,6 @@
   </div>
 </div>
 <div class="container mt-2 mb-3">
-  <h4 class="header center">Contactos de {{ request.user}}</h4>
   <table id="tablacontacto" class="highlight striped centered responsive-table">
     <thead>
       <th>Nombre</th>
@@ -68,7 +69,9 @@
 </div>
 {% endblock %}
 
-{% block scripts %}
+{% block scriptss %}
+<!-- jQuery DataTables -->
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript">
   $(document).ready(function() {
     $('#tablacontacto').DataTable({

@@ -2,6 +2,9 @@
 @import "componentes/format";
 // Text Colors
 // ==========================================================================
+.text-color-accent {
+  color: $secondary-color-light !important;
+}
 .text-color-primary {
   color: $text-color-primary !important;
 }

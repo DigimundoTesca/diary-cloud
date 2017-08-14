@@ -7,6 +7,9 @@ table.dataTable thead td {
 table.dataTable.no-footer {
   border-bottom: none; }
 
+.text-color-accent {
+  color: #ffbc33 !important; }
+
 .text-color-primary {
   color: #232323 !important; }
 
