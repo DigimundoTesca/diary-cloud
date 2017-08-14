@@ -1,3 +1,12 @@
+/**
+ * Formatea el color de celdas por jquery dateTable
+ */
+table.dataTable thead th,
+table.dataTable thead td {
+  border: none; }
+table.dataTable.no-footer {
+  border-bottom: none; }
+
 .text-color-primary {
   color: #232323 !important; }
 
@@ -15,21 +24,35 @@
   color: #7c7c7c; }
 
 /* label focus color */
-textarea.materialize-textarea:focus + label.active, .input-field input[type=text]:focus.validate + label.active, .input-field input[type=tel]:focus.validate + label.active, .input-field input[type=email]:focus.validate + label.active, .input-field input[type=url]:focus.validate + label.active {
+textarea.materialize-textarea:focus + label.active,
+.input-field input[type=text]:focus.validate + label.active,
+.input-field input[type=tel]:focus.validate + label.active,
+.input-field input[type=email]:focus.validate + label.active,
+.input-field input[type=url]:focus.validate + label.active {
   color: #5f83dd; }
 
 /* label underline focus color */
-textarea.materialize-textarea:focus:not([readonly]), .input-field input[type=text]:focus.validate, .input-field input[type=tel]:focus.validate, .input-field input[type=email]:focus.validate, .input-field input[type=url]:focus.validate {
+textarea.materialize-textarea:focus:not([readonly]),
+.input-field input[type=text]:focus.validate,
+.input-field input[type=tel]:focus.validate,
+.input-field input[type=email]:focus.validate,
+.input-field input[type=url]:focus.validate {
   border-bottom: 1px solid #5f83dd;
   box-shadow: 0 1px 0 0 #5f83dd; }
 
 /* valid color */
-.input-field input[type=text].valid, .input-field input[type=tel].valid, .input-field input[type=email].valid, .input-field input[type=url].valid {
+.input-field input[type=text].valid,
+.input-field input[type=tel].valid,
+.input-field input[type=email].valid,
+.input-field input[type=url].valid {
   border-bottom: 1px solid #00c853;
   box-shadow: 0 1px 0 0 #00c853; }
 
 /* invalid color */
-.input-field input[type=text].invalid, .input-field input[type=tel].invalid, .input-field input[type=email].invalid, .input-field input[type=url].invalid {
+.input-field input[type=text].invalid,
+.input-field input[type=tel].invalid,
+.input-field input[type=email].invalid,
+.input-field input[type=url].invalid {
   border-bottom: 1px solid #f44336;
   box-shadow: 0 1px 0 0 #f44336; }
 
@@ -62,7 +85,9 @@ footer.page-footer {
 main {
   flex: 1 0 auto; }
 
-nav, nav .button-collapse, nav ul li a {
+nav,
+nav .button-collapse,
+nav ul li a {
   color: #232323;
   display: flex; }
 
@@ -83,26 +108,26 @@ ul.dropdown-content {
 
 .file-field .btn {
   background-color: #2a56c6; }
-.file-field .btn:hover {
-  background-color: #5f83dd; }
+  .file-field .btn:hover {
+    background-color: #5f83dd; }
 
 .color-secondary {
   background-color: #ffab00 !important; }
 .color-primary {
   background-color: #2a56c6 !important; }
-.color-primary-darken {
-  background-color: #1d3b87 !important; }
-.color-primary-lighten {
-  background-color: #5f83dd !important; }
+  .color-primary-darken {
+    background-color: #1d3b87 !important; }
+  .color-primary-lighten {
+    background-color: #5f83dd !important; }
 .color-shade {
   background-color: #F5F5F5 !important; }
 
 .container-wide {
   margin-top: 3rem;
   margin-bottom: 5rem; }
-.container-wide a.btn {
-  border-radius: 100px;
-  margin-top: 1rem; }
+  .container-wide a.btn {
+    border-radius: 100px;
+    margin-top: 1rem; }
 
 .header {
   font-weight: 300; }
@@ -113,16 +138,16 @@ ul.dropdown-content {
 tr td.td-icons-container {
   display: flex;
   justify-content: center; }
-tr td.td-icons-container span.icon-container {
-  cursor: pointer;
-  display: flex;
-  height: 100%;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  overflow: hidden;
-  transition: all .3s; }
-tr td.td-icons-container span.icon-container i {
-  font-size: 1.7rem; }
+  tr td.td-icons-container span.icon-container {
+    cursor: pointer;
+    display: flex;
+    height: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    overflow: hidden;
+    transition: all .3s; }
+    tr td.td-icons-container span.icon-container i {
+      font-size: 1.7rem; }
 
 .login-card .card-content {
   padding-top: 8rem;
@@ -134,15 +159,15 @@ tr td.td-icons-container span.icon-container i {
 
 .parallax-container {
   height: 240px; }
-.parallax-container .parallax img {
-  max-width: 200%; }
-.parallax-container .parallax-body {
-  display: flex;
-  height: 100%;
-  text-align: center;
-  justify-content: center;
-  color: #F5F5F5;
-  align-items: center; }
+  .parallax-container .parallax img {
+    max-width: 200%; }
+  .parallax-container .parallax-body {
+    display: flex;
+    height: 100%;
+    text-align: center;
+    justify-content: center;
+    color: #F5F5F5;
+    align-items: center; }
 
 .mt-0 {
   margin-top: 0; }
@@ -163,8 +188,8 @@ tr td.td-icons-container span.icon-container i {
 
 .material-icons {
   color: #7c7c7c; }
-.material-icons.prefix.active {
-  color: #5f83dd; }
+  .material-icons.prefix.active {
+    color: #5f83dd; }
 
 .promo i {
   font-size: 10rem;
