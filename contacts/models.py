@@ -17,6 +17,8 @@ class Empresa(models.Model):
     nombre = models.CharField(max_length=60, default='')
     giro = models.CharField(max_length=30, default='')
     tipo = models.CharField(max_length=20, default='', choices=TIPO)
+    direccion = models.CharField(max_length=254, blank=True, null=True)
+    web = models.URLField(default='', blank=True, null=True)
 
     def __str__(self):
         return '%s' % self.nombre
