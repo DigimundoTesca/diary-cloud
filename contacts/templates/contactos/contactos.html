@@ -52,7 +52,7 @@
         <td>{{ contacto.cargo }}</td>
         <td>{{ contacto.usuario }}</td>
         <td class="td-icons-container">
-          <span class="icon-container"><i class="material-icons icon-info">info_outline</i></span>
+          <a class="modal-trigger" href="#modal1"><span class="icon-container"><i class="material-icons icon-info">info_outline</i></span></a>
           <span class="icon-container"><i class="material-icons icon-edit">mode_edit</i></span>
           <span class="icon-container"><i class="material-icons icon-delete">delete</i></span>
         </td>
@@ -67,6 +67,15 @@
     <i class="waves-effect waves-light material-icons">add</i>
   </a>
 </div>
+<div id="modal1" class="modal">
+  <div class="modal-content">
+    <h4>Modal Header</h4>
+    <p>A bunch of text</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+  </div>
+</div>
 {% endblock %}
 
 {% block scripts %}
@@ -74,6 +83,15 @@
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript">
   $(document).ready(function() {
+    $('.modal').modal({
+      dismissible: true, // Modal can be dismissed by clicking outside of the modal
+      opacity: .5, // Opacity of modal background
+      inDuration: 300, // Transition in duration
+      outDuration: 200, // Transition out duration
+      startingTop: '4%', // Starting top style attribute
+      endingTop: '10%', // Ending top style attribute
+    }
+  );
     $('#tablacontacto').DataTable({
       "oLanguage": {
         "sZeroRecords": "No se encontraron registros",
