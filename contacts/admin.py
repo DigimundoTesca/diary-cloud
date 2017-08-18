@@ -8,8 +8,8 @@ class TelefonoAdmin(admin.TabularInline):
 
 @admin.register(Empresa)
 class EmpresaAdmin(admin.ModelAdmin):
-        list_display = ('id', 'nombre', 'giro','tipo','direccion','web')
-
+        list_display = ('id', 'nombre', 'giro','tipo','direccion','web',)
+        list_editable = ('nombre', 'giro', 'tipo', 'direccion','web',)
 
 @admin.register(Contacto)
 class ContactoAdmin(admin.ModelAdmin):
