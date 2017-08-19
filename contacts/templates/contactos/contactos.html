@@ -62,20 +62,163 @@
   </table>
 </div>
 
-<div class="fixed-action-btn">
-  <a href="{% url 'contactos:nuevo_contacto' %}" class="btn-floating btn-large waves-effect waves-light color-secondary">
-    <i class="waves-effect waves-light material-icons">add</i>
-  </a>
-</div>
+
 <div id="modal1" class="modal">
   <div class="modal-content">
-    <h4>Modal Header</h4>
-    <p>A bunch of text</p>
+          <div class="container mt-1 mb-2">
+      <div class="card-panel">
+        <form class="" action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="row">
+          <!-- Nombre -->
+          <div class="input-field col s12">
+            <i class="material-icons prefix ">account_circle</i>
+            <input id="{{ form.nombre.id_for_label }}"
+              type="text"
+              class="validate {% if form.nombre.errors %}invalid{% endif %}"
+              name="{{ form.nombre.name }}"
+              value="{{ form.nombre.value }}"
+              maxlength="{{ form.nombre.field.max_length }}"
+              />
+            <label
+              for="{{ form.nombre.id_for_label }}"
+              data-error="{% for e in form.nombre.errors %}{{ e }}{% endfor %}"
+              />
+              Nombre</label>
+          </div>
+          <!-- Empresa -->
+          <div class="input-field col s12 m6">
+            <i class="material-icons prefix ">business</i>
+            <input id="{{ form.empresa.id_for_label }}"
+            type="text"
+            class="validate {% if form.empresa.errors %}invalid{% endif %}"
+            name="{{ form.empresa.name }}"
+            value="{{ form.empresa.value }}"
+            maxlength="{{ form.empresa.field.max_length }}"
+            />
+            <label
+              for="{{ form.empresa.id_for_label }}"
+              data-error="{% for e in form.empresa.errors %}{{ e }}{% endfor %}"
+              />Empresa</label>
+          </div>
+          <!-- Cargo -->
+          <div class="input-field col s12 m6">
+            <i class="material-icons prefix ">business_center</i>
+            <input id="{{ form.cargo.id_for_label }}"
+              type="text"
+              class="validate {% if form.cargo.errors %}invalid{% endif %}"
+              name="{{ form.cargo.name }}"
+              value="{{ form.cargo.value }}"
+              maxlength="{{ form.cargo.field.max_length }}"
+              />
+            <label
+              for="{{ form.cargo.id_for_label }}"
+              data-error="{% for e in form.cargo.errors %}{{ e }}{% endfor %}"
+              />
+              Cargo</label>
+          </div>
+          <!-- Telefono Principal -->
+          <div class="input-field col s12 m6">
+            <i class="material-icons prefix ">phone</i>
+            <input id="{{ form.telefono_principal.id_for_label }}"
+            type="tel"
+            class="validate {% if form.telefono_principal.errors %}invalid{% endif %}"
+            name="{{ form.telefono_principal.name }}"
+            value="{{ form.telefono_principal.value }}"
+            maxlength="{{ form.telefono_principal.field.max_length }}"
+            />
+            <label
+              for="{{ form.telefono_principal.id_for_label }}"
+              data-error="{% for e in form.telefono_principal.errors %}{{ e }}{% endfor %}"
+              />Telefono Principal</label>
+          </div>
+          <!-- Email -->
+          <div class="input-field col s12 m6">
+            <i class="material-icons prefix ">email</i>
+            <input id="{{ form.email.id_for_label }}"
+            type="email"
+            class="validate {% if form.email.errors %}invalid{% endif %}"
+            name="{{ form.email.name }}"
+            value="{{ form.email.value }}"
+            maxlength="{{ form.email.field.max_length }}"
+            />
+            <label
+              for="{{ form.email.id_for_label }}"
+              data-error="{% for e in form.email.errors %}{{ e }}{% endfor %}"
+            />Email</label>
+          </div>
+          <!-- Direccion -->
+          <div class="input-field col s12 m12">
+            <i class="material-icons prefix ">location_on</i>
+            <input id="{{ form.direcion.id_for_label }}"
+            type="text"
+            class="validate {% if form.direccion.errors %}invalid{% endif %}"
+            name="{{ form.direcion.name }}"
+            value="{{ form.value.value }}"
+            maxlength="{{ form.direcion.field.max_length }}"
+            />
+            <label
+              for="{{ form.direcion.id_for_label }}"
+              data-error="{% for e in form.direccion.errors %}{{ e }}{% endfor %}"
+              />Direccion</label>
+          </div>
+          <!-- Web -->
+          <div class="input-field col s12">
+            <i class="material-icons prefix ">link</i>
+            <input id="{{ form.web.id_for_label }}"
+            placeholder="http://www.ejemplo.com"
+            type="url"
+            class="validate {% if form.web.errors %}invalid{% endif %}"
+            name="{{ form.web.name }}"
+            maxlength="{{ form.web.field.max_length }}"
+            />
+            <label
+              for="{{ form.web.id_for_label }}"
+              data-error="{% for e in form.web.errors %}{{ e }}{% endfor %}"
+              />Web</label>
+          </div>
+          <!-- Nota -->
+          <div class="input-field col s12">
+            <i class="material-icons prefix ">note</i>
+            <textarea id="{{ form.nota.id_for_label }}"
+              name="{{ form.nota.name}}"
+              class="materialize-textarea {% if form.nota.errors %}invalid{% endif %}"
+              ></textarea>
+            <label
+              for="{{ form.nota.id_for_label }}"
+              data-error="{% for e in form.nota.errors %}{{ e }}{% endfor %}"
+              />Nota</label>
+          </div>
+          </div>
+          <!-- Imagen -->
+          <div class="file-field input-field col s12">
+            <div class="btn waves-effect waves-light">
+              <span>Foto</span>
+              <input type="file" name="{{ form.imagen.name }}">
+            </div>
+            <div class="file-path-wrapper">
+              <input type="text" class="file-path validate">
+            </div>
+          </div>
+          <input type="hidden" name="usuario" value="{{ request.user.id }}">
+          <button type="submit" name="button" class="btn bt waves-effect waves-light color-secondary right">Crear contacto</button>
+        </form>
+      </div>
+    </div>
   </div>
   <div class="modal-footer">
     <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
   </div>
 </div>
+
+
+
+<div class="fixed-action-btn">
+  <a href="#modal1" class="btn-floating btn-large waves-effect waves-light color-secondary modal-trigger">
+    <i class="waves-effect waves-light material-icons">add</i>
+  </a>
+</div>
+
 {% endblock %}
 
 {% block scripts %}
