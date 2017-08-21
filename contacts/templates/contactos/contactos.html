@@ -5,6 +5,8 @@
 <!--Let browser know website is optimized for mobile-->
 
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/rowreorder/1.2.0/css/rowReorder.dataTables.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.dataTables.min.css">
 
 {% endblock %}
 
@@ -20,7 +22,7 @@
   </div>
 </div>
 <div class="container mt-2 mb-3">
-  <table id="tablacontacto" class="highlight striped centered responsive-table">
+  <table id="tablacontacto" class="display responsive nowrap centered striped" cellspacing="0" width="100%">
     <thead>
       <th>Nombre</th>
       <th>Teléfono Principal</th>
@@ -39,13 +41,13 @@
         <td>{{ contacto.email }}</td>
         <td>{{ contacto.empresa_fk }}</td>
         <td>
-          {% if contacto.empresa_fk.tipo == "FUE" %}
+          {% if contacto.empresa_fk.tipo == "FG" %}
           <i class="material-icons">whatshot</i>
-          {% elif contacto.empresa_fk.tipo == "AGU" %
+          {% elif contacto.empresa_fk.tipo == "AG" %}
           <i class="material-icons">opacity</i>
-          {% elif contacto.empresa_fk.tipo == "TIE" %}
+          {% elif contacto.empresa_fk.tipo == "TR" %}
           <i class="material-icons">terrain</i>
-          {% elif contacto.empresa_fk.tipo == "AIR" %}
+          {% elif contacto.empresa_fk.tipo == "AR" %}
           <i class="material-icons">toys</i>
           {% endif %}
         </td>
@@ -63,7 +65,7 @@
 </div>
 
 
-<div id="modal1" class="modal">
+<div id="nuevo" class="modal">
   <div class="modal-content">
           <div class="container mt-1 mb-2">
       <div class="card-panel">
@@ -214,7 +216,7 @@
 
 
 <div class="fixed-action-btn">
-  <a href="#modal1" class="btn-floating btn-large waves-effect waves-light color-secondary modal-trigger">
+  <a href="#nuevo" class="btn-floating btn-large waves-effect waves-light color-secondary modal-trigger">
     <i class="waves-effect waves-light material-icons">add</i>
   </a>
 </div>
@@ -224,6 +226,8 @@
 {% block scripts %}
 <!-- jQuery DataTables -->
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/rowreorder/1.2.0/js/dataTables.rowReorder.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/responsive/2.1.1/js/dataTables.responsive.min.js"></script>
 <script type="text/javascript">
   $(document).ready(function() {
     $('.modal').modal({
@@ -235,6 +239,7 @@
       endingTop: '10%', // Ending top style attribute
     }
   );
+
     $('#tablacontacto').DataTable({
       "oLanguage": {
         "sZeroRecords": "No se encontraron registros",
@@ -247,6 +252,7 @@
         "oPaginate": {
           "sNext": "Siguiente",
           "sPrevious": "Anterior",
+          responsive : true
         },
       },
       "ordering": false,
