@@ -21,7 +21,19 @@
     </h2>
   </div>
 </div>
+
 <div class="container mt-2 mb-3">
+  <div class="row">
+  <div class="input-field col s12 m3">
+    <select>
+      <option value="" disabled selected>Choose your option</option>
+      <option value="1">Option 1</option>
+      <option value="2">Option 2</option>
+      <option value="3">Option 3</option>
+    </select>
+    <label>Materialize Select</label>
+  </div>
+  </div>
   <table id="tablacontacto" class="display responsive nowrap centered striped" cellspacing="0" width="100%">
     <thead>
       <th>Nombre</th>
@@ -54,9 +66,9 @@
         <td>{{ contacto.cargo }}</td>
         <td>{{ contacto.usuario }}</td>
         <td class="td-icons-container">
-          <a class="modal-trigger" href="#modal1"><span class="icon-container"><i class="material-icons icon-info">info_outline</i></span></a>
-          <span class="icon-container"><i class="material-icons icon-edit">mode_edit</i></span>
-          <span class="icon-container"><i class="material-icons icon-delete">delete</i></span>
+          <a class="modal-trigger" href="#info"><span class="icon-container"><i class="material-icons icon-info">info_outline</i></span></a>
+          <a class="modal-trigger" href="#edit"><span class="icon-container"><i class="material-icons icon-edit">mode_edit</i></span></a>
+          <a class="modal-trigger" href="#delete"><span class="icon-container"><i class="material-icons icon-delete">delete</i></span></a>
         </td>
       </tr>
       {% endfor %}
@@ -64,17 +76,33 @@
   </table>
 </div>
 
-
+<!-- Modal nuevo contactos -->
 <div id="nuevo" class="modal">
   <div class="modal-content">
-          <div class="container mt-1 mb-2">
+    <div class="container mt-1 mb-2">
       <div class="card-panel">
         <form class="" action="" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <div class="row">
+          {% csrf_token %}
+          <!-- imagen -->
+          <div class="file-field input-field col s12 m3">
+            <div class="row">
+              <div class="card login-card">
+                <div class="card-action center">
+                  <div class="row">
+                    <span class="icon-container">
+                      <i id="login-icon" class="material-icons icon-addimage">account_circle</i>
+                      <input type="file" name="{{ form.imagen.name }}">
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
           <!-- Nombre -->
           <div class="input-field col s12">
-            <i class="material-icons prefix ">account_circle</i>
+            <i class="material-icons prefix big">account_circle</i>
             <input id="{{ form.nombre.id_for_label }}"
               type="text"
               class="validate {% if form.nombre.errors %}invalid{% endif %}"
@@ -194,9 +222,13 @@
           </div>
           <!-- Imagen -->
           <div class="file-field input-field col s12">
-            <div class="btn waves-effect waves-light">
               <span>Foto</span>
-              <input type="file" name="{{ form.imagen.name }}">
+              <div class="row">
+                <span class="icon-container">
+                  <i id="login-icon" class="material-icons">account_circle</i>
+                  <input type="file" class="circle" name="{{ form.imagen.name }}">
+                </span>
+              </div>
             </div>
             <div class="file-path-wrapper">
               <input type="text" class="file-path validate">
@@ -208,11 +240,77 @@
       </div>
     </div>
   </div>
-  <div class="modal-footer">
-    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-  </div>
 </div>
 
+
+<div id="info" class="modal">
+  <div class="modal-content">
+          <div class="card">
+            <div class="card-image">
+              <img src="{{ request.user.avatar.url }}">
+              <span class="card-title">{{ request.user }}</span>
+            </div>
+            <div class="card-content">
+              <ul class="collection">
+                <li class="collection-item avatar">
+                  <i class="material-icons circle blue">account_circle</i>
+                  <span class="title">Nombre</span>
+                  <p>{{ request.user }}</p>
+                </li>
+                <li class="collection-item avatar">
+                  <i class="material-icons circle green">business</i>
+                  <span class="title">Empresa</span>
+                  <p>######</p>
+                </li>
+                <li class="collection-item avatar">
+                  <i class="material-icons circle pink">phone</i>
+                  <span class="title">Telefono</span>
+                  <ul class="collection">
+                    <a href="#!" class="collection-item">555555555555555</a>
+                    <a href="#!" class="collection-item">555555555555555</a>
+                  </ul>
+                </li>
+                <li class="collection-item avatar">
+                  <i class="material-icons circle orange">email</i>
+                  <span class="title">E-mail</span>
+                  <p>######</p>
+                </li>
+                <li class="collection-item avatar">
+                  <i class="material-icons circle red">location_on</i>
+                  <span class="title">Direccion</span>
+                  <p>######</p>
+                </li>
+                <li class="collection-item avatar">
+                  <i class="material-icons circle purple">link</i>
+                  <span class="title">Web</span>
+                  <p>######</p>
+                </li>
+                <li class="collection-item avatar">
+                  <i class="material-icons circle">note</i>
+                  <span class="title">Nota</span>
+                  <p>######</p>
+                </li>
+              </ul>
+            </div>
+            <div class="card-action">
+              <a href="#!" class="modal-close">Regresar</a>
+            </div>
+          </div>
+          </div>
+
+</div>
+
+
+<div id="delete" class="modal">
+  <div class="modal-content">
+    <h4>¿Desea eliminar este contacto?</h4>
+    <p>Se eliminara toda la informacion del contacto.</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Aceptar</a>
+    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cancelar</a>
+  </div>
+</div>
 
 
 <div class="fixed-action-btn">
@@ -233,7 +331,7 @@
     $('.modal').modal({
       dismissible: true, // Modal can be dismissed by clicking outside of the modal
       opacity: .5, // Opacity of modal background
-      inDuration: 300, // Transition in duration
+      inDuration: 600, // Transition in duration
       outDuration: 200, // Transition out duration
       startingTop: '4%', // Starting top style attribute
       endingTop: '10%', // Ending top style attribute

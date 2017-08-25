@@ -92,6 +92,10 @@ footer.page-footer  {
   &-delete:hover {
     color: lighten($error-color, 20%);
   }
+  &-addimage {
+    color: lighten($primary-color, 20%);
+    font-size: 80px;
+  }
 }
 main {
   flex: 1 0 auto;
