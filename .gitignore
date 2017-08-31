@@ -166,3 +166,6 @@ pip-selfcheck.json
 
 /users/migrations/
 !/users/migrations/__init__.py
+
+/phones/migrations/
+!/phones/migrations/__init__.py
