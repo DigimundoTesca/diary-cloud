@@ -26,7 +26,7 @@
           </div>
           <a href="#!user">
             {% if request.user.avatar %}
-            <img class="circle" src="{{ request.user.avatar.url }}">
+            {# <img class="circle" src="{{ request.user.avatar.url }}">#}
             {% else %}
             <img class="circle" src="{% static 'image/person-flat.png' %}">
             {% endif %}

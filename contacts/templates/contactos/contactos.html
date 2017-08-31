@@ -247,7 +247,11 @@
   <div class="modal-content">
           <div class="card">
             <div class="card-image">
+              {% if request.user.avatar %}
               <img src="{{ request.user.avatar.url }}">
+              {% else %}
+              <img class="circle" src="{% static 'image/person-flat.png' %}">
+              {% endif %}
               <span class="card-title">{{ request.user }}</span>
             </div>
             <div class="card-content">

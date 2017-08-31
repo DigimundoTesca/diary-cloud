@@ -84,9 +84,9 @@ footer.page-footer {
   color: #f44336; }
 .icon-container .icon-delete:hover {
   color: #f99d97; }
-  .icon-container .icon-addimage {
-    color: #7493e2;
-    font-size: 80px; }
+.icon-container .icon-addimage {
+  color: #7493e2;
+  font-size: 80px; }
 
 main {
   flex: 1 0 auto; }
