@@ -5,6 +5,8 @@
 <!--Let browser know website is optimized for mobile-->
 
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/rowreorder/1.2.0/css/rowReorder.dataTables.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.dataTables.min.css">
 
 {% endblock %}
 
@@ -19,8 +21,20 @@
     </h2>
   </div>
 </div>
+
 <div class="container mt-2 mb-3">
-  <table id="tablacontacto" class="highlight striped centered responsive-table">
+  <div class="row">
+  <div class="input-field col s12 m3">
+    <select>
+      <option value="" disabled selected>Choose your option</option>
+      <option value="1">Option 1</option>
+      <option value="2">Option 2</option>
+      <option value="3">Option 3</option>
+    </select>
+    <label>Materialize Select</label>
+  </div>
+  </div>
+  <table id="tablacontacto" class="display responsive nowrap centered striped" cellspacing="0" width="100%">
     <thead>
       <th>Nombre</th>
       <th>Teléfono Principal</th>
@@ -39,22 +53,22 @@
         <td>{{ contacto.email }}</td>
         <td>{{ contacto.empresa_fk }}</td>
         <td>
-          {% if contacto.empresa_fk.tipo == "FUE" %}
+          {% if contacto.empresa_fk.tipo == "FG" %}
           <i class="material-icons">whatshot</i>
-          {% elif contacto.empresa_fk.tipo == "AGU" %
+          {% elif contacto.empresa_fk.tipo == "AG" %}
           <i class="material-icons">opacity</i>
-          {% elif contacto.empresa_fk.tipo == "TIE" %}
+          {% elif contacto.empresa_fk.tipo == "TR" %}
           <i class="material-icons">terrain</i>
-          {% elif contacto.empresa_fk.tipo == "AIR" %}
+          {% elif contacto.empresa_fk.tipo == "AR" %}
           <i class="material-icons">toys</i>
           {% endif %}
         </td>
         <td>{{ contacto.cargo }}</td>
         <td>{{ contacto.usuario }}</td>
         <td class="td-icons-container">
-          <span class="icon-container"><i class="material-icons icon-info">info_outline</i></span>
-          <span class="icon-container"><i class="material-icons icon-edit">mode_edit</i></span>
-          <span class="icon-container"><i class="material-icons icon-delete">delete</i></span>
+          <a class="modal-trigger" href="#info"><span class="icon-container"><i class="material-icons icon-info">info_outline</i></span></a>
+          <a class="modal-trigger" href="#edit"><span class="icon-container"><i class="material-icons icon-edit">mode_edit</i></span></a>
+          <a class="modal-trigger" href="#delete"><span class="icon-container"><i class="material-icons icon-delete">delete</i></span></a>
         </td>
       </tr>
       {% endfor %}
@@ -62,18 +76,268 @@
   </table>
 </div>
 
+<!-- Modal nuevo contactos -->
+<div id="nuevo" class="modal">
+  <div class="modal-content">
+    <div class="container mt-1 mb-2">
+      <div class="card-panel">
+        <form class="" action="" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <!-- imagen -->
+          <div class="file-field input-field col s12 m3">
+            <div class="row">
+              <div class="card login-card">
+                <div class="card-action center">
+                  <div class="row">
+                    <span class="icon-container">
+                      <i id="login-icon" class="material-icons icon-addimage">account_circle</i>
+                      <input type="file" name="{{ form.imagen.name }}">
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+          <!-- Nombre -->
+          <div class="input-field col s12">
+            <i class="material-icons prefix big">account_circle</i>
+            <input id="{{ form.nombre.id_for_label }}"
+              type="text"
+              class="validate {% if form.nombre.errors %}invalid{% endif %}"
+              name="{{ form.nombre.name }}"
+              value="{{ form.nombre.value }}"
+              maxlength="{{ form.nombre.field.max_length }}"
+              />
+            <label
+              for="{{ form.nombre.id_for_label }}"
+              data-error="{% for e in form.nombre.errors %}{{ e }}{% endfor %}"
+              />
+              Nombre</label>
+          </div>
+          <!-- Empresa -->
+          <div class="input-field col s12 m6">
+            <i class="material-icons prefix ">business</i>
+            <input id="{{ form.empresa.id_for_label }}"
+            type="text"
+            class="validate {% if form.empresa.errors %}invalid{% endif %}"
+            name="{{ form.empresa.name }}"
+            value="{{ form.empresa.value }}"
+            maxlength="{{ form.empresa.field.max_length }}"
+            />
+            <label
+              for="{{ form.empresa.id_for_label }}"
+              data-error="{% for e in form.empresa.errors %}{{ e }}{% endfor %}"
+              />Empresa</label>
+          </div>
+          <!-- Cargo -->
+          <div class="input-field col s12 m6">
+            <i class="material-icons prefix ">business_center</i>
+            <input id="{{ form.cargo.id_for_label }}"
+              type="text"
+              class="validate {% if form.cargo.errors %}invalid{% endif %}"
+              name="{{ form.cargo.name }}"
+              value="{{ form.cargo.value }}"
+              maxlength="{{ form.cargo.field.max_length }}"
+              />
+            <label
+              for="{{ form.cargo.id_for_label }}"
+              data-error="{% for e in form.cargo.errors %}{{ e }}{% endfor %}"
+              />
+              Cargo</label>
+          </div>
+          <!-- Telefono Principal -->
+          <div class="input-field col s12 m6">
+            <i class="material-icons prefix ">phone</i>
+            <input id="{{ form.telefono_principal.id_for_label }}"
+            type="tel"
+            class="validate {% if form.telefono_principal.errors %}invalid{% endif %}"
+            name="{{ form.telefono_principal.name }}"
+            value="{{ form.telefono_principal.value }}"
+            maxlength="{{ form.telefono_principal.field.max_length }}"
+            />
+            <label
+              for="{{ form.telefono_principal.id_for_label }}"
+              data-error="{% for e in form.telefono_principal.errors %}{{ e }}{% endfor %}"
+              />Telefono Principal</label>
+          </div>
+          <!-- Email -->
+          <div class="input-field col s12 m6">
+            <i class="material-icons prefix ">email</i>
+            <input id="{{ form.email.id_for_label }}"
+            type="email"
+            class="validate {% if form.email.errors %}invalid{% endif %}"
+            name="{{ form.email.name }}"
+            value="{{ form.email.value }}"
+            maxlength="{{ form.email.field.max_length }}"
+            />
+            <label
+              for="{{ form.email.id_for_label }}"
+              data-error="{% for e in form.email.errors %}{{ e }}{% endfor %}"
+            />Email</label>
+          </div>
+          <!-- Direccion -->
+          <div class="input-field col s12 m12">
+            <i class="material-icons prefix ">location_on</i>
+            <input id="{{ form.direcion.id_for_label }}"
+            type="text"
+            class="validate {% if form.direccion.errors %}invalid{% endif %}"
+            name="{{ form.direcion.name }}"
+            value="{{ form.value.value }}"
+            maxlength="{{ form.direcion.field.max_length }}"
+            />
+            <label
+              for="{{ form.direcion.id_for_label }}"
+              data-error="{% for e in form.direccion.errors %}{{ e }}{% endfor %}"
+              />Direccion</label>
+          </div>
+          <!-- Web -->
+          <div class="input-field col s12">
+            <i class="material-icons prefix ">link</i>
+            <input id="{{ form.web.id_for_label }}"
+            placeholder="http://www.ejemplo.com"
+            type="url"
+            class="validate {% if form.web.errors %}invalid{% endif %}"
+            name="{{ form.web.name }}"
+            maxlength="{{ form.web.field.max_length }}"
+            />
+            <label
+              for="{{ form.web.id_for_label }}"
+              data-error="{% for e in form.web.errors %}{{ e }}{% endfor %}"
+              />Web</label>
+          </div>
+          <!-- Nota -->
+          <div class="input-field col s12">
+            <i class="material-icons prefix ">note</i>
+            <textarea id="{{ form.nota.id_for_label }}"
+              name="{{ form.nota.name}}"
+              class="materialize-textarea {% if form.nota.errors %}invalid{% endif %}"
+              ></textarea>
+            <label
+              for="{{ form.nota.id_for_label }}"
+              data-error="{% for e in form.nota.errors %}{{ e }}{% endfor %}"
+              />Nota</label>
+          </div>
+          </div>
+          <!-- Imagen -->
+          <div class="file-field input-field col s12">
+              <span>Foto</span>
+              <div class="row">
+                <span class="icon-container">
+                  <i id="login-icon" class="material-icons">account_circle</i>
+                  <input type="file" class="circle" name="{{ form.imagen.name }}">
+                </span>
+              </div>
+            </div>
+            <div class="file-path-wrapper">
+              <input type="text" class="file-path validate">
+            </div>
+          </div>
+          <input type="hidden" name="usuario" value="{{ request.user.id }}">
+          <button type="submit" name="button" class="btn bt waves-effect waves-light color-secondary right">Crear contacto</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="info" class="modal">
+  <div class="modal-content">
+          <div class="card">
+            <div class="card-image">
+              <img src="{{ request.user.avatar.url }}">
+              <span class="card-title">{{ request.user }}</span>
+            </div>
+            <div class="card-content">
+              <ul class="collection">
+                <li class="collection-item avatar">
+                  <i class="material-icons circle blue">account_circle</i>
+                  <span class="title">Nombre</span>
+                  <p>{{ request.user }}</p>
+                </li>
+                <li class="collection-item avatar">
+                  <i class="material-icons circle green">business</i>
+                  <span class="title">Empresa</span>
+                  <p>######</p>
+                </li>
+                <li class="collection-item avatar">
+                  <i class="material-icons circle pink">phone</i>
+                  <span class="title">Telefono</span>
+                  <ul class="collection">
+                    <a href="#!" class="collection-item">555555555555555</a>
+                    <a href="#!" class="collection-item">555555555555555</a>
+                  </ul>
+                </li>
+                <li class="collection-item avatar">
+                  <i class="material-icons circle orange">email</i>
+                  <span class="title">E-mail</span>
+                  <p>######</p>
+                </li>
+                <li class="collection-item avatar">
+                  <i class="material-icons circle red">location_on</i>
+                  <span class="title">Direccion</span>
+                  <p>######</p>
+                </li>
+                <li class="collection-item avatar">
+                  <i class="material-icons circle purple">link</i>
+                  <span class="title">Web</span>
+                  <p>######</p>
+                </li>
+                <li class="collection-item avatar">
+                  <i class="material-icons circle">note</i>
+                  <span class="title">Nota</span>
+                  <p>######</p>
+                </li>
+              </ul>
+            </div>
+            <div class="card-action">
+              <a href="#!" class="modal-close">Regresar</a>
+            </div>
+          </div>
+          </div>
+
+</div>
+
+
+<div id="delete" class="modal">
+  <div class="modal-content">
+    <h4>¿Desea eliminar este contacto?</h4>
+    <p>Se eliminara toda la informacion del contacto.</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Aceptar</a>
+    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cancelar</a>
+  </div>
+</div>
+
+
 <div class="fixed-action-btn">
-  <a href="{% url 'contactos:nuevo_contacto' %}" class="btn-floating btn-large waves-effect waves-light color-secondary">
+  <a href="#nuevo" class="btn-floating btn-large waves-effect waves-light color-secondary modal-trigger">
     <i class="waves-effect waves-light material-icons">add</i>
   </a>
 </div>
+
 {% endblock %}
 
 {% block scripts %}
 <!-- jQuery DataTables -->
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/rowreorder/1.2.0/js/dataTables.rowReorder.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/responsive/2.1.1/js/dataTables.responsive.min.js"></script>
 <script type="text/javascript">
   $(document).ready(function() {
+    $('.modal').modal({
+      dismissible: true, // Modal can be dismissed by clicking outside of the modal
+      opacity: .5, // Opacity of modal background
+      inDuration: 600, // Transition in duration
+      outDuration: 200, // Transition out duration
+      startingTop: '4%', // Starting top style attribute
+      endingTop: '10%', // Ending top style attribute
+    }
+  );
+
     $('#tablacontacto').DataTable({
       "oLanguage": {
         "sZeroRecords": "No se encontraron registros",
@@ -86,6 +350,7 @@
         "oPaginate": {
           "sNext": "Siguiente",
           "sPrevious": "Anterior",
+          responsive : true
         },
       },
       "ordering": false,
