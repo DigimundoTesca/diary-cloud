@@ -15,6 +15,7 @@ class Empresa(models.Model):
         (AIRE, 'aire'),
     )
     nombre = models.CharField(max_length=60, default='')
+    email = models.EmailField(default='', blank=True, null=True)
     giro = models.CharField(max_length=30, default='')
     tipo = models.CharField(max_length=20, default='', choices=TIPO)
     direccion = models.CharField(max_length=254, blank=True, null=True)
