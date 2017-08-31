@@ -46,12 +46,12 @@ class Contacto(models.Model):
     telefono_principal = models.CharField(max_length=12, default='') # Se sustituirá por teléfonos personales
     empresa = models.CharField(max_length=255, null=True, blank=True) #campo a eliminar, añadido en modelo empresa
     empresa_fk = models.ManyToManyField(Empresa)
-    cargo = models.CharField(max_length=28, default='', blank=True, null=True)
-    web_personal = models.URLField(default='', blank=True, null=True)
-    email = models.EmailField(default='', blank=True, null=True)
-    direccion = models.CharField(max_length=254, blank=True, null=True) # campo a eliminar, añadido en modelo empresa
-    nota = models.TextField(default='', blank=True, null=True)
-    imagen = models.ImageField(upload_to='contacts', null=True, blank=True)
+    cargo = models.CharField(max_length=28, default='', blank=True, )
+    web_personal = models.URLField(default='', blank=True, )
+    email = models.EmailField(default='', blank=True, )
+    direccion = models.CharField(max_length=254, blank=True, ) # campo a eliminar, añadido en modelo empresa
+    nota = models.TextField(default='', blank=True, )
+    imagen = models.ImageField(upload_to='contacts', blank=True)
     creado_en = models.DateTimeField(editable=False, auto_now=True)
 
     def __str__(self):
