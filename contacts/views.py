@@ -38,7 +38,7 @@ class NuevoContacto(CreateView):
         'imagen',
         'usuario',
     ]
-    template_name = 'contactos/nuevo_contacto.html'
+    template_name = 'contactos/nuevo'
 
     def form_valid(self, form):
         self.object = form.save()

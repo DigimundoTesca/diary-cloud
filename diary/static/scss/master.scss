@@ -1,7 +1,10 @@
-@import "components/variables";
-
+@import "componentes/variables";
+@import "componentes/format";
 // Text Colors
 // ==========================================================================
+.text-color-accent {
+  color: $secondary-color-light !important;
+}
 .text-color-primary {
   color: $text-color-primary !important;
 }
@@ -14,7 +17,7 @@
 .text-color-error {
   color: $error-color !important;
 }
-
+ 
 // INPUT COLORS OVERRIDE
 // ==========================================================================
 /* label color */
@@ -88,6 +91,10 @@ footer.page-footer  {
   }
   &-delete:hover {
     color: lighten($error-color, 20%);
+  }
+  &-addimage {
+    color: lighten($primary-color, 20%);
+    font-size: 80px;
   }
 }
 main {
