@@ -25,38 +25,34 @@ class Empresa(models.Model):
 
 
 class Contacto(models.Model):
-    nombre = models.CharField(max_length=60, default='')
-    telefono_principal = models.CharField(max_length=12, default='')
-    empresa = models.CharField(max_length=255, null=True, blank=True)#campo a eliminar, añadido en modelo empresa
-    empresa_fk = models.ForeignKey(Empresa, default=1)
-    cargo = models.CharField(max_length=28, default='', blank=True, null=True)
-    web = models.URLField(default='', blank=True, null=True)#campo a eliminar, añadido en modelo empresa
+    SEÑOR = 'SR'
+    SEÑORA  = 'SRA'
+    LICENCIADO  = 'LIC'
+    INGENIERO = 'ING'
+    MAESTRO = 'MTR'
+    DOCTOR = 'DR'
+
+    TRATAMIENTOS = (
+        (SEÑOR, 'Sr.'),
+        (SEÑORA, 'Sra.'),
+        (LICENCIADO, 'Lic.'),
+        (INGENIERO, 'Ing.'),
+        (MAESTRO, 'Mtr.'),
+        (DOCTOR, 'Dr.'),
+    )
+    creado_por = models.ForeignKey(User)
+    tratamiento = models.CharField(max_length=3, choices=TRATAMIENTOS, default=SEÑOR)
+    nombre = models.CharField(max_length=90, default='')
+    telefono_principal = models.CharField(max_length=12, default='')  # Se sustituirá por teléfonos personales
+    direccion = models.CharField(max_length=254, blank=True, null=True)  # campo a eliminar, añadido en modelo empresa
     email = models.EmailField(default='', blank=True, null=True)
-    direccion = models.CharField(max_length=254, blank=True, null=True)#campo a eliminar, añadido en modelo empresa
+    empresa = models.CharField(max_length=255, null=True, blank=True)  # campo a eliminar, añadido en modelo empresa
+    empresa_fk = models.ManyToManyField(Empresa)
+    cargo = models.CharField(max_length=28, default='', blank=True, )
+    web_personal = models.URLField(default='', blank=True, null=True)
     nota = models.TextField(default='', blank=True, null=True)
-    imagen = models.ImageField(upload_to='contacts', null=True, blank=True)
-    usuario = models.ForeignKey(User)
-    creado_en = models.DateTimeField(editable=False, auto_now=True)
+    imagen = models.ImageField(upload_to='contacts', blank=True, null=True)
+    fecha_de_creacion = models.DateTimeField(editable=False, auto_now=True, null=True)
 
     def __str__(self):
         return '%s' % self.nombre
-
-    def telefono(self):
-        telefonos = Telefono.objects.filter(contacto=self.id)
-        options = []
-
-        for tel in telefonos:
-            options.append(("<option value=%s selected>%s</option>" % (tel, tel)))
-        tag = """<select>%s</select>""" % str(options)
-        return tag
-
-    telefono.allow_tags = True
-
-
-class Telefono(models.Model):
-    tipo = models.CharField(max_length=24, default='', help_text='Ingresa el tipo de telefono')
-    numero = models.CharField(max_length=12, default='', help_text='Ingresa un numero no mayor a 16 digitos')
-    contacto = models.ForeignKey(Contacto)
-
-    def __str__(self):
-        return '%s' % self.numero

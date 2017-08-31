@@ -1,7 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from .models import Contacto, Telefono, Empresa
 from django.views.generic import CreateView
+
+from .models import Contacto
+from .models import Empresa
+from phones.models import Telefono
 
 
 def home(request):
