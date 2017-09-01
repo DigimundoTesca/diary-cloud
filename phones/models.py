@@ -29,7 +29,6 @@ class TelefonoContacto(models.Model):
         verbose_name_plural  = 'Teléfonos del Contácto'
 
 
-
 class TelefonoEmpresa(models.Model):
     """
     Modelo que contiene las referencias a los teléfonos de los contactos
@@ -42,6 +41,7 @@ class TelefonoEmpresa(models.Model):
         Empresa,
         on_delete=models.CASCADE
     )
+
     class Meta:
         verbose_name = 'Teléfono de la Empresa'
         verbose_name_plural  = 'Teléfonos de la Empresa'

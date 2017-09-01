@@ -20,7 +20,7 @@ class Empresa(models.Model):
     tipo = models.CharField(max_length=20, default='', choices=TIPO)
     direccion = models.CharField(max_length=254, blank=True, null=True)
     web = models.URLField(default='', blank=True, null=True)
-    descripcion = models.TextField(blank=True, null=True)
+    nota = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return '%s' % self.nombre
@@ -45,12 +45,9 @@ class Contacto(models.Model):
     creado_por = models.ForeignKey(User)
     tratamiento = models.CharField(max_length=3, choices=TRATAMIENTOS, default=SEÑOR)
     nombre = models.CharField(max_length=90, default='')
-    telefono_principal = models.CharField(max_length=12, default='')  # Se sustituirá por teléfonos personales
-    direccion = models.CharField(max_length=254, blank=True, null=True)  # campo a eliminar, añadido en modelo empresa
     email = models.EmailField(default='', blank=True, null=True)
-    empresa = models.CharField(max_length=255, null=True, blank=True)  # campo a eliminar, añadido en modelo empresa
-    empresa_fk = models.ManyToManyField(Empresa)
-    cargo = models.CharField(max_length=28, default='', blank=True, )
+    empresa = models.ManyToManyField(Empresa)
+    cargo = models.CharField(max_length=48, default='', blank=True, )
     web_personal = models.URLField(default='', blank=True, null=True)
     nota = models.TextField(default='', blank=True, null=True)
     imagen = models.ImageField(upload_to='contacts', blank=True, null=True)

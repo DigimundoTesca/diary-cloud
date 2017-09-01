@@ -17,8 +17,7 @@ class TelefonoEmpresaInline(admin.TabularInline):
 
 @admin.register(Empresa)
 class EmpresaAdmin(admin.ModelAdmin):
-    list_display = ('id', 'nombre', 'giro','tipo','direccion','web',)
-    list_editable = ('nombre', 'giro', 'tipo', 'direccion','web',)
+    list_display = ('id', 'nombre', 'giro', 'tipo', 'direccion', 'web',)
     inlines = [
         TelefonoEmpresaInline,
     ]
@@ -26,8 +25,8 @@ class EmpresaAdmin(admin.ModelAdmin):
 
 @admin.register(Contacto)
 class ContactoAdmin(admin.ModelAdmin):
-    list_display = ('id', 'nombre', 'email', 'telefono_principal', 'empresa', 'creado_por',)
-    list_editable = ('email', 'telefono_principal',)
+    list_display = ('id', 'nombre', 'email', 'creado_por',)
+    list_editable = ('email',)
     list_display_links = ('id', 'nombre', )
     inlines = [
         TelefonoContactoInline,
