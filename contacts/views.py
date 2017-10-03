@@ -5,7 +5,7 @@ from django.views.generic import CreateView
 from .models import Contacto
 from .models import Empresa
 from phones.models import Telefono
-
+from .forms import ContactoForm
 
 def home(request):
     template = 'home.html'
@@ -19,10 +19,18 @@ def contactos(request):
     contactos_lista = Contacto.objects.all()
     telefonos_lista = Telefono.objects.all()
     empresa_lista = Empresa.objects.all()
+    if request.method == 'POST':
+        form = ContactoForm(request.POST)
+        if form.is_valid():
+            form.save()
+        return redirect()
+    else:
+        form = ContactoForm()
     context = {
         'contactos': contactos_lista,
         'telefonos': telefonos_lista,
-        'empresa' : empresa_lista
+        'empresa': empresa_lista,
+        'form': form,
     }
     return render(request, template, context)
 
