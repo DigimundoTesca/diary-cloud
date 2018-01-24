@@ -5,7 +5,7 @@ from django.views.generic import CreateView
 from .models import Contacto
 from .models import Empresa
 from phones.models import Telefono
-
+from .forms import ContactoForm
 
 def home(request):
     template = 'home.html'
@@ -22,27 +22,15 @@ def contactos(request):
     context = {
         'contactos': contactos_lista,
         'telefonos': telefonos_lista,
-        'empresa' : empresa_lista
+        'empresa': empresa_lista
     }
     return render(request, template, context)
 
-
-class NuevoContacto(CreateView):
-    model = Contacto
-    fields = [
-        'nombre',
-        'empresa',
-        'cargo',
-        'telefono_principal',
-        'email',
-        'direccion',
-        'web',
-        'nota',
-        'imagen',
-        'usuario',
-    ]
-    template_name = 'contactos/nuevo'
-
-    def form_valid(self, form):
-        self.object = form.save()
-        return redirect('contactos:contactos')
+@login_required()
+def nuevoContacto(request):
+    template = 'contactos/nuevo_contacto.html'
+    form = ContactoForm(request.POST or None)
+    context = {
+        'form': form,
+    }
+    return render(request, template, context)
