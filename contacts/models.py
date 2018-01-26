@@ -7,20 +7,25 @@ class Empresa(models.Model):
     FUEGO = 'FG'
     TIERRA = 'TR'
     AIRE = 'AR'
+    ETER = 'ET'
 
-    TIPO = (
+    ELEMENTO = (
         (AGUA, 'agua'),
         (FUEGO, 'fuego'),
         (TIERRA, 'tierra'),
         (AIRE, 'aire'),
+        (ETER, 'eter')
     )
+
     nombre = models.CharField(max_length=60, default='')
     email = models.EmailField(default='', blank=True, null=True)
     giro = models.CharField(max_length=30, default='')
-    tipo = models.CharField(max_length=20, default='', choices=TIPO)
+    subgiro = models.CharField(max_length=30, default='')
+    elemento = models.CharField(max_length=2, default='', choices=ELEMENTO)
+    tipo = models.CharField(max_length=2, default='',)
     direccion = models.CharField(max_length=254, blank=True, null=True)
-    web = models.URLField(default='', blank=True, null=True)
-    nota = models.TextField(blank=True, null=True)
+   # web = models.URLField(default='', blank=True, null=True)
+   # nota = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return '%s' % self.nombre
@@ -42,16 +47,31 @@ class Contacto(models.Model):
         (MAESTRO, 'Mtr.'),
         (DOCTOR, 'Dr.'),
     )
-    creado_por = models.ForeignKey(User)
+
+    CERO = '0'
+    UNO = '1'
+    DOS = '2'
+    TRES = '3'
+
+    NIVEL = (
+        (CERO, 'Dueño/Fundador'),
+        (UNO, 'Socio/Director'),
+        (DOS, 'Gerente/Jefe de area'),
+        (TRES, 'Empleado, Analisis'),
+    )
+
+    creado_por = models.ForeignKey(User, default=0)
     tratamiento = models.CharField(max_length=3, choices=TRATAMIENTOS, default=SEÑOR)
     nombre = models.CharField(max_length=90, default='')
     email = models.EmailField(default='', blank=True, null=True)
-    empresa = models.ManyToManyField(Empresa)
-    cargo = models.CharField(max_length=48, default='', blank=True, )
-    web_personal = models.URLField(default='', blank=True, null=True)
+    ntd = models.CharField(max_length=2, default=CERO, choices=NIVEL)
     nota = models.TextField(default='', blank=True, null=True)
-    imagen = models.ImageField(upload_to='contacts', blank=True, null=True)
     fecha_de_creacion = models.DateTimeField(editable=False, auto_now=True, null=True)
+    telefono = models.PositiveIntegerField(blank=True, null=True)
+    extension = models.PositiveSmallIntegerField(blank=True, null=True)
+    celular = models.PositiveIntegerField(blank=True, null=True)
+    empresa = models.ForeignKey(Empresa)
+    imagen = models.ImageField(blank=True, null=True)
 
     def __str__(self):
         return '%s' % self.nombre

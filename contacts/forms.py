@@ -8,9 +8,15 @@ from users.models import User
 
 
 class ContactoForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(ContactoForm, self).__init__(*args, **kwargs)
+        self.fields['creado_por'].widget.attrs.update({'class': 'hidden'})
+        self.fields['tipo'].widget.attrs.update({'class': 'hidden'})
+
     class Meta:
         model = Contacto
         fields = (
+            'creado_por',
             'tratamiento',
             'nombre',
             'email',
@@ -21,8 +27,12 @@ class ContactoForm(forms.ModelForm):
             'nota',
             'celular',
             'imagen',
+            'giro',
+            'cargo',
+            'tipo',
         )
         labels = {
+            'creado_por': '',
             'tratamiento': 'Tratamiento',
             'nombre': 'Nombre',
             'email': 'E-mail',
@@ -32,5 +42,8 @@ class ContactoForm(forms.ModelForm):
             'celular': 'Celular',
             'empresa': 'Empresa',
             'nota': 'Nota',
-            'imagen': 'Fotografia',
+            'imagen': '',
+            'giro': 'Giro',
+            'cargo': 'Cargo',
+            'tipo': '',
         }
