@@ -15,11 +15,6 @@ class TelefonoEmpresaInline(admin.TabularInline):
     extra = 2
 
 
-@admin.register(Empresa)
-class EmpresaAdmin(admin.ModelAdmin):
-    list_display = ('id', 'nombre', 'giro', 'tipo', 'direccion',)
-
-
 @admin.register(Contacto)
 class ContactoAdmin(admin.ModelAdmin):
     list_display = ('id', 'nombre', 'email', 'creado_por',)

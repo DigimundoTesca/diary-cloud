@@ -3,26 +3,9 @@ from users.models import User
 
 
 class Empresa(models.Model):
-    AGUA = 'AG'
-    FUEGO = 'FG'
-    TIERRA = 'TR'
-    AIRE = 'AR'
-    ETER = 'ET'
-
-    ELEMENTO = (
-        (AGUA, 'agua'),
-        (FUEGO, 'fuego'),
-        (TIERRA, 'tierra'),
-        (AIRE, 'aire'),
-        (ETER, 'eter')
-    )
 
     nombre = models.CharField(max_length=60, default='')
     email = models.EmailField(default='', blank=True, null=True)
-    giro = models.CharField(max_length=30, default='')
-    subgiro = models.CharField(max_length=30, default='')
-    elemento = models.CharField(max_length=2, default='', choices=ELEMENTO)
-    tipo = models.CharField(max_length=2, default='',)
     direccion = models.CharField(max_length=254, blank=True, null=True)
    # web = models.URLField(default='', blank=True, null=True)
    # nota = models.TextField(blank=True, null=True)
@@ -54,15 +37,134 @@ class Contacto(models.Model):
     TRES = '3'
 
     NIVEL = (
-        (CERO, 'Dueño/Fundador'),
-        (UNO, 'Socio/Director'),
-        (DOS, 'Gerente/Jefe de area'),
-        (TRES, 'Empleado, Analisis'),
+        (CERO, 'Dueño/Fundador (0)'),
+        (UNO, 'Socio/Director (1)'),
+        (DOS, 'Gerente/Jefe de area (2)'),
+        (TRES, 'Empleado, Analisis (3)'),
     )
 
-    creado_por = models.ForeignKey(User, default=0)
+    AGUA = 'AG'
+    FUEGO = 'FG'
+    TIERRA = 'TR'
+    AIRE = 'AR'
+    ETER = 'ET'
+
+    ELEMENTO = (
+        (AGUA, 'agua'),
+        (FUEGO, 'fuego'),
+        (TIERRA, 'tierra'),
+        (AIRE, 'aire'),
+        (ETER, 'eter')
+    )
+
+    COAUCHING = 'CC'
+    DH = 'DH'
+    EDUCACION = 'ED'
+    AP = 'AP'
+    RESTAURANTES = 'RS'
+    BIENESTAR = 'BN'
+    SALUD = 'SL'
+    AAG = 'AAG'
+    #Fuego
+    IBIT = 'IBIT'
+    SEGUROS = 'SG'
+    CONTADORES = 'CN'
+    ECONOMIA = 'EC'
+    FE = 'FE'
+    AF = 'AF'
+    #Aire
+    CONSULTORES = 'CON'
+    PROMO = 'PRM'
+    DIFUSION = 'DF'
+    MARKETING = 'MRD'
+    IMPRENTA = 'IMP'
+    UNIFORMES = 'UNI'
+    IMAGEN = 'IMP'
+    DECORACION = 'DEC'
+    DISEÑOG = 'DSG'
+    ANUNCIOSP = 'ANP'
+    FOTOGRAFIA = 'FTG'
+    ESTUDIOSM = 'ETM'
+    AA = 'AA'
+    #Tierra
+    CONSULTORESPROCESOS = 'COPR'
+    EQCOMPUTO = 'EQCO'
+    EQCOCINA = 'ECOC'
+    EQELECTRONICOS = 'EQEL'
+    EQOFICINA = 'EQOF'
+    BIENESRAICES = 'BIRA'
+    FERRETERIA = 'FERRE'
+    MATERIASPRIMAS = 'MAPR'
+    DSOFTWARE = 'SFTW'
+    DISEÑOINDUSTRIAL = 'DIIN'
+    INSELECTRECTRICAS = 'INEL'
+    INSPLUVIALES = 'INPL'
+    MANTENIMIENTO = 'MNTN'
+    PRODQUIMICOS = 'PRQU'
+    ARQUITECTURA = 'ARQI'
+    INGCIVIL = 'INGC'
+    DISEÑOINTERIORES = 'DIIN'
+    SEGURIDAD = 'SGRD'
+    SISTEMASAMIN = 'SISA'
+    AT = 'AT'
+
+    GIRO = (
+        (IBIT, 'Inversiones BIT'),#Fuego
+        (SEGUROS, 'Seguros'),
+        (CONTADORES, 'Contadores'),
+        (ECONOMIA, 'Economía'),
+        (FE, 'Facturación Electrónica'),
+        (AF, 'Asesoria Fuego'),
+        #Aire
+        (CONSULTORES, 'Consultores/Agencia'),
+        (PROMO, 'Promocionales'),
+        (DIFUSION, 'Difusión'),
+        (MARKETING, 'Marketing Digital'),
+        (IMPRENTA, 'Imprenta'),
+        (UNIFORMES, 'Uniformes'),
+        (IMAGEN, 'Imagen personal'),
+        (DECORACION, 'Decoración'),
+        (DISEÑOG, 'Diseño Grafico'),
+        (ANUNCIOSP, 'Anuncios Públicos'),
+        (FOTOGRAFIA, 'Fotografia'),
+        (ESTUDIOSM, 'Estudios de Mercado'),
+        (AA, 'Asesoría Aire'),
+        #Tierra
+        (CONSULTORESPROCESOS, 'Consultores Procesos'),
+        (EQCOMPUTO, 'Equipos de Cómputo'),
+        (EQCOCINA, 'Equipos de Cocina'),
+        (EQELECTRONICOS, 'Equipos Electrónicos'),
+        (EQOFICINA, 'Equipos de Oficina'),
+        (BIENESRAICES, 'Bienes Raíces'),
+        (FERRETERIA, 'Ferretería'),
+        (MATERIASPRIMAS, 'Materias primas'),
+        (DSOFTWARE, 'Desarrollo de Software'),
+        (DISEÑOINDUSTRIAL, 'Diseño Industrial'),
+        (INSELECTRECTRICAS, 'Instalaciones Eléctricas'),
+        (INSPLUVIALES, 'Instalaciones Pluviales'),
+        (MANTENIMIENTO, 'Mantenimiento'),
+        (PRODQUIMICOS, 'Productos Quimicos'),
+        (ARQUITECTURA, 'Arquitectura'),
+        (INGCIVIL, 'Ingeniería Civil'),
+        (DISEÑOINTERIORES, 'Diseños de Interiores'),
+        (SEGURIDAD, 'Seguridad'),
+        (SISTEMASAMIN, 'Sistemas de Amin'),
+        (AA, 'Asesoría Tierra'),
+        #Agua
+        (COAUCHING, 'Coauching'),
+        (DH, 'Desarrollo Humano'),
+        (EDUCACION, 'Educación'),
+        (AP, 'Alianzas politicas'),
+        (RESTAURANTES, 'Restaurantes'),
+        (BIENESTAR, 'Bienestar'),
+        (SALUD, 'Salud'),
+        (AAG, 'Asesoria Agua'),
+    )
+
+    creado_por = models.ForeignKey(User, default=1, null=True)
     tratamiento = models.CharField(max_length=3, choices=TRATAMIENTOS, default=SEÑOR)
     nombre = models.CharField(max_length=90, default='')
+    cargo = models.CharField(max_length=90, default='', blank=True, null=True)
     email = models.EmailField(default='', blank=True, null=True)
     ntd = models.CharField(max_length=2, default=CERO, choices=NIVEL)
     nota = models.TextField(default='', blank=True, null=True)
@@ -70,7 +172,10 @@ class Contacto(models.Model):
     telefono = models.PositiveIntegerField(blank=True, null=True)
     extension = models.PositiveSmallIntegerField(blank=True, null=True)
     celular = models.PositiveIntegerField(blank=True, null=True)
-    empresa = models.ForeignKey(Empresa)
+    empresa = models.CharField(max_length=30, default='', blank=True, null=True)
+    giro = models.CharField(max_length=4, default='', choices=GIRO)
+    subgiro = models.CharField(max_length=30, default='')
+    tipo = models.CharField(max_length=3, default=AGUA, choices=ELEMENTO)
     imagen = models.ImageField(blank=True, null=True)
 
     def __str__(self):
