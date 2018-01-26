@@ -219,3 +219,7 @@ tr td.td-icons-container {
     font-size: 1.7rem; } }
 
 /*# sourceMappingURL=master.css.map */
+
+.hidden {
+  display: none;
+}
